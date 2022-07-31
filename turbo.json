@@ -1,0 +1,28 @@
+{
+  "baseBranch": "origin/main",
+  "npmClient": "npm",
+  "pipeline": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": [".next/**", "dist/**", "out/**"]
+    },
+    "start": {
+      "outputs": []
+    },
+    "lint": {
+      "outputs": []
+    },
+    "format": {
+      "outputs": []
+    },
+    "clean": {
+      "outputs": []
+    },
+    "fclean": {
+      "outputs": []
+    },
+    "dev": {
+      "cache": false
+    }
+  }
+}
