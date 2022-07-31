@@ -1,0 +1,23 @@
+# Dockerfile
+*Dockerfile
+
+# Environment
+**/.env*
+
+# Git
+.git/
+
+# Node
+node_modules/
+
+# Turbo
+.turbo/
+
+# Builds
+.next/
+dist/
+out/
+
+# Editors and IDEs
+.idea/
+.vscode/

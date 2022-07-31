@@ -1,0 +1,43 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Install dependencies
+        run: |
+          npm install -g \
+          semantic-release \
+          @semantic-release/commit-analyzer \
+          @semantic-release/release-notes-generator \
+          @semantic-release/changelog \
+          @semantic-release/npm \
+          @semantic-release/git \
+          @semantic-release/github \
+          conventional-changelog-conventionalcommits
+
+          echo "$(npm bin -g)" >> $GITHUB_PATH
+      - name: Get global node_modules path
+        id: get-global-node-modules-path
+        run: |
+          echo "::set-output name=NODE_PATH::$(npm root -g)"
+      - name: Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          NODE_PATH: ${{ steps.get-global-node-modules-path.outputs.NODE_PATH }}
+        run: npm exec --ws -- semantic-release

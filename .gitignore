@@ -1,0 +1,24 @@
+# Environment
+**/.env*
+
+# Node
+node_modules/
+
+# Turbo
+.turbo/
+
+# Builds
+.next/
+dist/
+out/
+
+# Jetbrains
+.idea/
+
+# VSCode
+.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/*.code-snippets
