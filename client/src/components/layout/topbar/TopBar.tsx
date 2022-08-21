@@ -1,7 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { FC } from "react";
-import { Navbar, useTheme } from "react-daisyui";
+import { Button, Dropdown, Navbar, useTheme } from "react-daisyui";
+import { useTranslation } from "react-i18next";
 
 import { WEBSITE_TITLE } from "../../../constants";
 
@@ -9,6 +11,8 @@ import { LanguageSwitcher } from "./LanguageSwitcher";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 
 export const TopBar: FC = () => {
+  const { locale } = useRouter();
+  const { t } = useTranslation("topBar");
   const { theme } = useTheme();
 
   return (
@@ -27,7 +31,30 @@ export const TopBar: FC = () => {
               </a>
             </Link>
           </Navbar.Start>
-          <Navbar.Center />
+          <Navbar.Center className={"justify-center"}>
+            <Link href={"/"}>
+              <Button color={"ghost"} size={"sm"}>
+                {t("navigation.home.title", { lng: locale })}
+              </Button>
+            </Link>
+            <Dropdown>
+              <Dropdown.Toggle color={"ghost"} size={"sm"}>
+                {t("navigation.blog.title", { lng: locale })}
+              </Dropdown.Toggle>
+              <Dropdown.Menu className={"w-52"}>
+                <Link href={"/blog"}>
+                  <Dropdown.Item>
+                    {t("navigation.blog.home", { lng: locale })}
+                  </Dropdown.Item>
+                </Link>
+                <Link href={"/blog/categories"}>
+                  <Dropdown.Item>
+                    {t("navigation.blog.categories", { lng: locale })}
+                  </Dropdown.Item>
+                </Link>
+              </Dropdown.Menu>
+            </Dropdown>
+          </Navbar.Center>
           <Navbar.End>
             <div className={"mr-1"}>
               <ThemeSwitcher />

@@ -15,6 +15,9 @@
     "format": {
       "outputs": []
     },
+    "test": {
+      "outputs": []
+    },
     "clean": {
       "outputs": []
     },

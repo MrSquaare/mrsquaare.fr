@@ -7,6 +7,17 @@
     {
       "name": "client",
       "path": "./client"
+    },
+    {
+      "name": "common",
+      "path": "./common"
+    },
+    {
+      "name": "server",
+      "path": "./server"
     }
-  ]
+  ],
+  "settings": {
+    "jest.disabledWorkspaceFolders": ["root", "client", "common"]
+  }
 }

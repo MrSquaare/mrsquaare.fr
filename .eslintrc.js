@@ -5,10 +5,9 @@ module.exports = {
     "plugin:prettier/recommended",
     "plugin:import/recommended",
     "plugin:import/typescript",
+    "plugin:jest/recommended",
   ],
   env: {
-    browser: true,
-    es2021: true,
     node: true,
   },
   parser: "@typescript-eslint/parser",

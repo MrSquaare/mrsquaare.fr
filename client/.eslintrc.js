@@ -7,6 +7,9 @@ module.exports = {
     "plugin:@next/next/recommended",
     "plugin:tailwindcss/recommended",
   ],
+  env: {
+    browser: true,
+  },
   settings: {
     react: {
       version: "detect",
@@ -15,6 +18,7 @@ module.exports = {
   rules: {
     "react/jsx-curly-brace-presence": ["warn", { props: "always" }],
     "react/jsx-sort-props": ["warn"],
+    "react/prop-types": ["off"],
     "tailwindcss/no-custom-classname": ["off"],
   },
 };

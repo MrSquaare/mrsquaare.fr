@@ -8,15 +8,19 @@
 .git/
 
 # Node
-node_modules/
+**/node_modules/
 
 # Turbo
-.turbo/
+**/.turbo/
 
 # Builds
-.next/
-dist/
-out/
+**/.next/
+**/.swc/
+**/dist/
+**/out/
+
+# Server data
+server/data/
 
 # Editors and IDEs
 .idea/

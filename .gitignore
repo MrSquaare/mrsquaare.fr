@@ -12,6 +12,12 @@ node_modules/
 dist/
 out/
 
+# Tests
+coverage/
+
+# Server data
+server/data/
+
 # Jetbrains
 .idea/
 

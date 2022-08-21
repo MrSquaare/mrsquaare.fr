@@ -13,5 +13,7 @@ body,
 }
 
 *[id] {
-  @apply scroll-mt-16;
+  @apply scroll-mt-20;
 }
+
+@import "highlight/theme";
