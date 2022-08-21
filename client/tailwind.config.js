@@ -20,11 +20,8 @@ module.exports = {
   content: [
     "./src/components/**/*.{js,ts,jsx,tsx}",
     "./src/pages/**/*.{js,ts,jsx,tsx}",
-  ],
-  safelist: [
-    {
-      pattern: /./,
-    },
+    "../node_modules/daisyui/dist/**/*.js",
+    "../node_modules/react-daisyui/dist/**/*.{cjs,js}",
   ],
   theme: {
     container: {
@@ -69,5 +66,5 @@ module.exports = {
     ],
     darkTheme: "dark",
   },
-  plugins: [require("daisyui")],
+  plugins: [require("@tailwindcss/typography"), require("daisyui")],
 };

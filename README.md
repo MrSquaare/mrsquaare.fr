@@ -17,9 +17,12 @@ MrSquaare's personal website
 
 This repository is a [monorepo](https://en.wikipedia.org/wiki/Monorepo), powered by [Turborepo](https://turborepo.org/).
 
-It is composed of one main projects:
+It is composed of two main projects:
 
 - the [Client](client), powered by [Next.js](https://nextjs.org/)
+- the [Server](server), powered by [Fastify](https://www.fastify.io/)
+
+The packages common to both projects can be found in [common](common)
 
 ### Context and motivations
 
@@ -57,7 +60,7 @@ npm run build
 
 ## Using
 
-Start the server:
+Start the client and the server:
 
 ```shell script
 npm run start

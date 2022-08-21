@@ -4,7 +4,7 @@ import { useCallback, useMemo } from "react";
 import { Language } from "../types";
 
 export const useLanguage = (languages: Language[]) => {
-  const { asPath, locale, pathname, query, push } = useRouter();
+  const { locale, pathname, query, push } = useRouter();
 
   const language = useMemo(
     () => languages.find((language) => language.id === locale),
@@ -13,11 +13,13 @@ export const useLanguage = (languages: Language[]) => {
 
   const setLanguage = useCallback(
     (languageId: string) => {
-      push({ pathname, query }, asPath, {
+      push({ pathname, query }, undefined, {
         locale: languageId,
+      }).catch((e) => {
+        console.error("Failed to set language", e);
       });
     },
-    [asPath, pathname, query, push]
+    [pathname, query, push]
   );
 
   return { language, setLanguage };
