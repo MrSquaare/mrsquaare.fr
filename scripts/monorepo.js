@@ -150,11 +150,7 @@ const generateNotes = (plugin, options) => {
 const getPlugin = async (pluginInfo) => {
   const name = typeof pluginInfo === "string" ? pluginInfo : pluginInfo[0];
   const config = typeof pluginInfo === "string" ? {} : pluginInfo[1];
-  const module = await importModule(
-    "/home/mrsquaare/.nvm/versions/node/v18.14.2/lib/node_modules/" +
-      name +
-      "/index.js",
-  );
+  const module = await importModule(name);
 
   return {
     name,
