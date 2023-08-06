@@ -1,13 +1,13 @@
 import path from "path";
 
 import authPlugin from "@fastify/auth";
-import compressPlugin from "@fastify/compress";
 import corsPlugin from "@fastify/cors";
 import etagPlugin from "@fastify/etag";
 import helmetPlugin from "@fastify/helmet";
 import rateLimitPlugin from "@fastify/rate-limit";
 import staticPlugin from "@fastify/static";
 import swaggerPlugin from "@fastify/swagger";
+import swaggerUIPlugin from "@fastify/swagger-ui";
 import fastify from "fastify";
 import { ZodError } from "zod";
 
@@ -46,9 +46,8 @@ server.register(rateLimitPlugin, {
 });
 
 server.register(etagPlugin);
-// FIXME: Bug in @fastify/compress plugin
-// See https://github.com/fastify/fastify-compress/issues/215
-//server.register(compressPlugin);
+// FIXME: Encoding error
+// server.register(compressPlugin);
 
 server.register(staticPlugin, {
   root: path.resolve("./data/uploads"),
@@ -56,9 +55,7 @@ server.register(staticPlugin, {
 });
 
 server.register(swaggerPlugin, {
-  routePrefix: "/v1/swagger",
-  exposeRoute: true,
-  staticCSP: true,
+  mode: "dynamic",
   openapi: {
     info: {
       title: "blog.mrsquaare.fr API",
@@ -74,10 +71,15 @@ server.register(swaggerPlugin, {
       },
     },
   },
+  transform: zodSwaggerTransformer as FastifySwaggerTransformer,
+});
+
+server.register(swaggerUIPlugin, {
+  routePrefix: "/v1/swagger",
+  staticCSP: true,
   uiConfig: {
     layout: "BaseLayout",
   },
-  transform: zodSwaggerTransformer as FastifySwaggerTransformer,
 });
 
 server.register(authPlugin);

@@ -20,20 +20,18 @@ export const TopBar: FC = () => {
       <div className={"container mx-auto"}>
         <Navbar className={"px-4"}>
           <Navbar.Start>
-            <Link href={"/"}>
-              <a className={"inline-flex items-center"}>
-                <Image
-                  alt={WEBSITE_TITLE}
-                  height={28}
-                  src={`/icon-${theme}.svg`}
-                  width={28}
-                />
-              </a>
+            <Link className={"inline-flex items-center"} href={"/"}>
+              <Image
+                alt={WEBSITE_TITLE}
+                height={28}
+                src={`/icon-${theme}.svg`}
+                width={28}
+              />
             </Link>
           </Navbar.Start>
           <Navbar.Center className={"justify-center"}>
-            <Link href={"/"}>
-              <Button color={"ghost"} size={"sm"}>
+            <Link href={"/"} legacyBehavior passHref>
+              <Button color={"ghost"} size={"sm"} tag={"a"}>
                 {t("navigation.home.title", { lng: locale })}
               </Button>
             </Link>
@@ -42,12 +40,12 @@ export const TopBar: FC = () => {
                 {t("navigation.blog.title", { lng: locale })}
               </Dropdown.Toggle>
               <Dropdown.Menu className={"w-52"}>
-                <Link href={"/blog"}>
+                <Link href={"/blog"} legacyBehavior passHref>
                   <Dropdown.Item>
                     {t("navigation.blog.home", { lng: locale })}
                   </Dropdown.Item>
                 </Link>
-                <Link href={"/blog/categories"}>
+                <Link href={"/blog/categories"} legacyBehavior passHref>
                   <Dropdown.Item>
                     {t("navigation.blog.categories", { lng: locale })}
                   </Dropdown.Item>

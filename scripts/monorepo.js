@@ -1,8 +1,34 @@
 const cp = require("child_process");
+const fs = require("fs");
 const path = require("path");
 
 const CWD = process.cwd();
 const packageJson = require(path.join(CWD, "package.json"));
+
+const npmLocalPath = cp.execSync("npm root").toString();
+const npmGlobalPath = cp.execSync("npm root -g").toString();
+
+const isLocalModule = (name) => {
+  return fs.existsSync(path.join(npmLocalPath, name));
+};
+
+const isGlobalModule = (name) => {
+  return fs.existsSync(path.join(npmGlobalPath, name));
+};
+
+const importModule = async (name) => {
+  const indexJSPath = path.join(name, "index.js");
+
+  if (isLocalModule(name)) {
+    return import(path.join(npmLocalPath, indexJSPath));
+  }
+
+  if (isGlobalModule(name)) {
+    return import(path.join(npmGlobalPath, indexJSPath));
+  }
+
+  return import(name);
+};
 
 const defaultConfig = {
   plugins: [
@@ -51,10 +77,10 @@ const filterCommits = async (commits, options) => {
     const root = await getGitRootPath();
     const filePaths = await getGitCommitFilePaths(commit);
     const fileFullPaths = filePaths.map((filePath) =>
-      path.resolve(root, filePath)
+      path.resolve(root, filePath),
     );
     const includeFileFullPaths = options.includeFilePaths.map((filePath) =>
-      path.resolve(root, filePath)
+      path.resolve(root, filePath),
     );
     let isIncluded = false;
 
@@ -88,11 +114,11 @@ const analyzeCommits = (plugin, options) => {
     const filteredCommits = await filterCommits(context.commits, options);
     const result = await plugin.module[stepName](
       { ...globalPluginConfig, ...plugin.config },
-      { ...context, commits: filteredCommits }
+      { ...context, commits: filteredCommits },
     );
 
     context.logger.success(
-      `Completed step "${stepName}" of plugin "${plugin.name}"`
+      `Completed step "${stepName}" of plugin "${plugin.name}"`,
     );
 
     return result;
@@ -110,21 +136,25 @@ const generateNotes = (plugin, options) => {
     const filteredCommits = await filterCommits(context.commits, options);
     const result = await plugin.module[stepName](
       { ...globalPluginConfig, ...plugin.config },
-      { ...context, commits: filteredCommits }
+      { ...context, commits: filteredCommits },
     );
 
     context.logger.success(
-      `Completed step "${stepName}" of plugin "${plugin.name}"`
+      `Completed step "${stepName}" of plugin "${plugin.name}"`,
     );
 
     return result;
   };
 };
 
-const getPlugin = (pluginInfo) => {
+const getPlugin = async (pluginInfo) => {
   const name = typeof pluginInfo === "string" ? pluginInfo : pluginInfo[0];
   const config = typeof pluginInfo === "string" ? {} : pluginInfo[1];
-  const module = require(name);
+  const module = await importModule(
+    "/home/mrsquaare/.nvm/versions/node/v18.14.2/lib/node_modules/" +
+      name +
+      "/index.js",
+  );
 
   return {
     name,
@@ -139,21 +169,21 @@ const filterPluginsByStep = (plugins, stepName) => {
   });
 };
 
-const getAnalyzeCommits = (config, options) => {
+const getAnalyzeCommits = async (config, options) => {
   const pluginsInfo = config.plugins;
-  const plugins = pluginsInfo.map((info) => getPlugin(info));
+  const plugins = await Promise.all(pluginsInfo.map((info) => getPlugin(info)));
 
   return filterPluginsByStep(plugins, "analyzeCommits").map((plugin) =>
-    analyzeCommits(plugin, options)
+    analyzeCommits(plugin, options),
   );
 };
 
-const getGenerateNotes = (config, options) => {
+const getGenerateNotes = async (config, options) => {
   const pluginsInfo = config.plugins;
-  const plugins = pluginsInfo.map((info) => getPlugin(info));
+  const plugins = await Promise.all(pluginsInfo.map((info) => getPlugin(info)));
 
   return filterPluginsByStep(plugins, "generateNotes").map((plugin) =>
-    generateNotes(plugin, options)
+    generateNotes(plugin, options),
   );
 };
 
@@ -170,8 +200,8 @@ const getMonorepoConfig = (config, options) => {
   };
 
   return {
-    analyzeCommits: getAnalyzeCommits(config, options),
-    generateNotes: getGenerateNotes(config, options),
+    analyzeCommits: async () => getAnalyzeCommits(config, options),
+    generateNotes: async () => getGenerateNotes(config, options),
     tagFormat: getTagFormat(config),
   };
 };
@@ -180,7 +210,7 @@ const withMonorepo = (
   config,
   options = {
     includeFilePaths: [],
-  }
+  },
 ) => {
   return {
     ...config,

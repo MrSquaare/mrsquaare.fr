@@ -8,7 +8,7 @@ export const useLanguage = (languages: Language[]) => {
 
   const language = useMemo(
     () => languages.find((language) => language.id === locale),
-    [languages, locale]
+    [languages, locale],
   );
 
   const setLanguage = useCallback(
@@ -19,7 +19,7 @@ export const useLanguage = (languages: Language[]) => {
         console.error("Failed to set language", e);
       });
     },
-    [pathname, query, push]
+    [pathname, query, push],
   );
 
   return { language, setLanguage };

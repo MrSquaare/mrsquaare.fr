@@ -6,7 +6,7 @@ import { cloneDeep } from "lodash";
 import { ReadOptions, WriteOptions } from "../types";
 import { safeDeleteFile, safeReadFile, safeWriteFile } from "../utilities";
 
-export abstract class DirectoryRepository<T, TCreate, TUpdate> {
+export abstract class DirectoryRepository<T, TUpdate> {
   protected dirPath: string;
 
   constructor(dirPath: string) {
@@ -15,7 +15,7 @@ export abstract class DirectoryRepository<T, TCreate, TUpdate> {
 
   protected abstract fromRaw(raw: string): Partial<T>;
   protected abstract toRaw(value: Partial<T>): string;
-  protected abstract merge(oldValue: Partial<T>, value: Partial<T>): Partial<T>;
+  protected abstract merge(oldValue: Partial<T>, value: TUpdate): Partial<T>;
 
   async init(values?: [string, T][]): Promise<void> {
     const exists = await this.exists();
@@ -29,8 +29,8 @@ export abstract class DirectoryRepository<T, TCreate, TUpdate> {
     if (values?.length) {
       await Promise.all(
         values.map(([name, value]) =>
-          this.writeFile(name, value, undefined, exists)
-        )
+          this.writeFile(name, value, undefined, exists),
+        ),
       );
     }
   }
@@ -66,7 +66,7 @@ export abstract class DirectoryRepository<T, TCreate, TUpdate> {
     return values;
   }
 
-  async create(name: string, value: TCreate): Promise<Partial<T>> {
+  async create(name: string, value: T): Promise<Partial<T>> {
     const newValue = cloneDeep(value);
 
     await this.writeFile(name, newValue, { flag: "wx" });
@@ -102,7 +102,7 @@ export abstract class DirectoryRepository<T, TCreate, TUpdate> {
   protected async readFile(
     name: string,
     options?: ReadOptions,
-    doLock?: boolean
+    doLock?: boolean,
   ): Promise<Partial<T>> {
     const filePath = path.join(this.dirPath, name);
     const raw = await safeReadFile(filePath, options, doLock);
@@ -115,7 +115,7 @@ export abstract class DirectoryRepository<T, TCreate, TUpdate> {
     name: string,
     value: Partial<T>,
     options?: WriteOptions,
-    doLock?: boolean
+    doLock?: boolean,
   ): Promise<void> {
     const raw = this.toRaw(value);
     const filePath = path.join(this.dirPath, name);

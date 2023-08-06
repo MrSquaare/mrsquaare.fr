@@ -15,7 +15,7 @@ const formatInfo = format.printf(
     }
 
     return formatted;
-  }
+  },
 );
 
 export const LOGGER = createLogger({
@@ -23,7 +23,7 @@ export const LOGGER = createLogger({
   format: format.combine(
     format.metadata({ key: "metadata" }),
     format.timestamp({ format: "YYYY/MM/DD HH:mm:ss" }),
-    formatInfo
+    formatInfo,
   ),
   transports: [new transports.Console()],
 });

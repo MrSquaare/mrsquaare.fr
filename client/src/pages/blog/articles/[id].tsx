@@ -18,10 +18,10 @@ const ArticlePage: NextPage<Props> = ({ id }) => {
   return (
     <>
       <Head>
-        <title>{`${article?.title} - ${WEBSITE_TITLE}`}</title>
+        <title>{`${article?.title ?? "..."} - ${WEBSITE_TITLE}`}</title>
       </Head>
       {error && (
-        <div className={"container mx-auto py-8 px-4"}>
+        <div className={"container mx-auto px-4 py-8"}>
           <Alert className={"mb-4"} status={"error"}>
             {error.message}
           </Alert>
@@ -40,7 +40,7 @@ const ArticlePage: NextPage<Props> = ({ id }) => {
             </Hero>
           </div>
           <hr className={"border-base-200"} />
-          <div className={"container mx-auto py-8 px-4"}>
+          <div className={"container mx-auto px-4 py-8"}>
             <ArticleContent content={article.content} />
           </div>
         </>

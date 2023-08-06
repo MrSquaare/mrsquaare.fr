@@ -1,6 +1,6 @@
 import { h } from "hastscript";
 import { omit } from "lodash";
-import { Directive } from "mdast-util-directive";
+import { Directives } from "mdast-util-directive";
 import Link from "next/link";
 import { FC, Fragment } from "react";
 import { Alert, Checkbox, CodeMockup } from "react-daisyui";
@@ -15,7 +15,8 @@ import remarkDirective from "remark-directive";
 import remarkGemogi from "remark-gemoji";
 import remarkGFM from "remark-gfm";
 import { Plugin } from "unified";
-import { Node, visit } from "unist-util-visit";
+import { Node } from "unist"; // eslint-disable-line import/no-unresolved
+import { visit } from "unist-util-visit";
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
@@ -38,11 +39,7 @@ const components: ComponentsMap = {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   a: ({ node, href, rel, target, ...props }) => {
     if (href && !rel && !target) {
-      return (
-        <Link href={href}>
-          <a {...props} />
-        </Link>
-      );
+      return <Link href={href} {...props} />;
     }
 
     return <a href={href} rel={rel} target={target} {...props} />;
@@ -105,7 +102,7 @@ const components: ComponentsMap = {
   },
 };
 
-const isDirectiveNode = (node: Node): node is Directive => {
+const isDirectiveNode = (node: Node): node is Directives => {
   const { type } = node;
 
   return (
@@ -136,7 +133,7 @@ type Props = {
 export const ArticleContent: FC<Props> = ({ content }) => {
   return (
     <ReactMarkdown
-      className={"prose-xl prose max-w-none"}
+      className={"prose prose-xl max-w-none"}
       components={components}
       rehypePlugins={[
         rehypeSlug,

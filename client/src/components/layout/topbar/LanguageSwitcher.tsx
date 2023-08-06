@@ -36,7 +36,7 @@ export const LanguageSwitcher = () => {
       setLanguage(newLanguageId);
       setPreferredLanguage(newLanguageId);
     },
-    [setLanguage]
+    [setLanguage],
   );
 
   return (
@@ -53,7 +53,7 @@ export const LanguageSwitcher = () => {
             >
               {item.icon} {item.name}
             </Dropdown.Item>
-          ) : null
+          ) : null,
         )}
       </Dropdown.Menu>
     </Dropdown>

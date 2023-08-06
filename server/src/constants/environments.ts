@@ -16,7 +16,7 @@ export const CACHE_PATH =
   process.env.CACHE_PATH || path.join(DATA_PATH, "./_cache");
 export const CACHE_ARTICLE_METAS_PATH = path.join(
   CACHE_PATH,
-  "./article-metas.json"
+  "./article-metas.json",
 );
 
 export const AUTH_PASSWORD = process.env.AUTH_PASSWORD || v4();

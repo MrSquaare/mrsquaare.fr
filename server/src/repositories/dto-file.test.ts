@@ -40,7 +40,7 @@ describe("DTOFileRepository", () => {
     ([id, data]) => ({
       ...data,
       id,
-    })
+    }),
   );
 
   beforeEach(() => {
@@ -157,7 +157,7 @@ describe("DTOFileRepository", () => {
       await fs.writeFile(filePath, JSON.stringify(fileContent));
 
       await expect(repository.create(dtoId, value)).rejects.toBeInstanceOf(
-        DTOAlreadyExistsException
+        DTOAlreadyExistsException,
       );
     });
   });
@@ -193,7 +193,7 @@ describe("DTOFileRepository", () => {
       await fs.writeFile(filePath, JSON.stringify({}));
 
       await expect(repository.read(dtoId)).rejects.toBeInstanceOf(
-        DTONotFoundException
+        DTONotFoundException,
       );
     });
   });
@@ -232,7 +232,7 @@ describe("DTOFileRepository", () => {
       await fs.writeFile(filePath, JSON.stringify({}));
 
       await expect(repository.update(dtoId, value)).rejects.toBeInstanceOf(
-        DTONotFoundException
+        DTONotFoundException,
       );
     });
   });
@@ -268,7 +268,7 @@ describe("DTOFileRepository", () => {
       await fs.writeFile(filePath, JSON.stringify({}));
 
       await expect(repository.delete(dtoId)).rejects.toBeInstanceOf(
-        DTONotFoundException
+        DTONotFoundException,
       );
     });
   });

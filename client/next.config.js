@@ -8,4 +8,5 @@ module.exports = {
     locales: ["fr", "en"],
     localeDetection: false,
   },
+  transpilePackages: ["react-daisyui"],
 };

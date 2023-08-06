@@ -18,12 +18,12 @@ import { DTOService } from "../types";
 export abstract class DTOFileService<
   T extends DTO,
   TCreate extends Omit<T, "id">,
-  TUpdate extends Partial<TCreate>
+  TUpdate extends Partial<TCreate>,
 > implements DTOService<T, TCreate, TUpdate>
 {
   constructor(
     protected repository: DTOFileRepository<T, TCreate, TUpdate>,
-    protected EntitySchema: ZodSchema<T>
+    protected EntitySchema: ZodSchema<T>,
   ) {}
 
   async init(values?: T[]): Promise<void> {
@@ -42,7 +42,7 @@ export abstract class DTOFileService<
     }
   }
 
-  async create(id: string, value: TCreate): Promise<T> {
+  async create(id: T["id"], value: TCreate): Promise<T> {
     try {
       const partialArticle = await this.repository.create(id, value);
 
@@ -52,7 +52,7 @@ export abstract class DTOFileService<
     }
   }
 
-  async read(id: string): Promise<T> {
+  async read(id: T["id"]): Promise<T> {
     try {
       const partialArticle = await this.repository.read(id);
 
@@ -62,7 +62,7 @@ export abstract class DTOFileService<
     }
   }
 
-  async update(id: string, value: TUpdate): Promise<T> {
+  async update(id: T["id"], value: TUpdate): Promise<T> {
     try {
       const partialArticle = await this.repository.update(id, value);
 
@@ -72,7 +72,7 @@ export abstract class DTOFileService<
     }
   }
 
-  async delete(id: string): Promise<void> {
+  async delete(id: T["id"]): Promise<void> {
     try {
       await this.repository.delete(id);
     } catch (e) {

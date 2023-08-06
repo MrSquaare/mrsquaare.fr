@@ -12,7 +12,7 @@ export const cb: FastifyPluginCallback<Options> = (server, opts, done) => {
       async (server, opts) => {
         await router(server, opts);
       },
-      { prefix: opts.prefix }
+      { prefix: opts.prefix },
     );
   });
 

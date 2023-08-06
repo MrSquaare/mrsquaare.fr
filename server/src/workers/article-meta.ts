@@ -5,7 +5,7 @@ export class ArticleMetaWorker {
   constructor(
     protected articleService: ArticleService,
     protected articleMetaService: ArticleMetaService,
-    protected watcher: ArticleWatcher
+    protected watcher: ArticleWatcher,
   ) {}
 
   public async start() {

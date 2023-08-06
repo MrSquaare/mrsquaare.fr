@@ -20,7 +20,7 @@ describe("DirectoryRepository", () => {
 
   beforeEach(() => {
     vol.reset();
-    vol.mkdirpSync(dirPath);
+    vol.mkdirSync(dirPath, { recursive: true });
   });
 
   afterAll(() => {
@@ -43,11 +43,11 @@ describe("DirectoryRepository", () => {
 
       const got1 = await fs.readFile(
         `${dirPathWithParentDir}/file1.txt`,
-        "utf8"
+        "utf8",
       );
       const got2 = await fs.readFile(
         `${dirPathWithParentDir}/file2.txt`,
-        "utf8"
+        "utf8",
       );
 
       expect(got1).toBe("test 1");
@@ -58,7 +58,7 @@ describe("DirectoryRepository", () => {
       const dirPathWithParentDir = "/parent" + dirPath;
       const repository = new DirectoryRepositoryImpl(dirPathWithParentDir);
 
-      vol.mkdirpSync(dirPathWithParentDir);
+      vol.mkdirSync(dirPathWithParentDir, { recursive: true });
 
       await fs.writeFile(`${dirPathWithParentDir}/file1.txt`, "test 1");
       await fs.writeFile(`${dirPathWithParentDir}/file2.txt`, "test 2");
@@ -74,11 +74,11 @@ describe("DirectoryRepository", () => {
 
       const got1 = await fs.readFile(
         `${dirPathWithParentDir}/file1.txt`,
-        "utf8"
+        "utf8",
       );
       const got2 = await fs.readFile(
         `${dirPathWithParentDir}/file2.txt`,
-        "utf8"
+        "utf8",
       );
 
       expect(got1).toBe("new test 1");

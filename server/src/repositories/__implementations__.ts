@@ -14,7 +14,6 @@ export type DummyUpdateDTO = Partial<DummyCreateDTO>;
 
 export class DirectoryRepositoryImpl extends DirectoryRepository<
   string,
-  string,
   string
 > {
   protected fromRaw(raw: string): string {
@@ -66,7 +65,7 @@ export class DTOFileRepositoryImpl extends DTOFileRepository<
   }
 }
 
-export class FileRepositoryImpl extends FileRepository<string, string, string> {
+export class FileRepositoryImpl extends FileRepository<string, string> {
   protected fromRaw(raw: string): string {
     return raw;
   }

@@ -6,18 +6,18 @@ import { cloneDeep } from "lodash";
 import { ReadOptions, WriteOptions } from "../types";
 import { safeDeleteFile, safeReadFile, safeWriteFile } from "../utilities";
 
-export abstract class FileRepository<T, TCreate, TUpdate> {
+export abstract class FileRepository<T, TUpdate> {
   protected filePath: string;
 
   constructor(filePath: string) {
     this.filePath = path.resolve(filePath);
   }
 
-  protected abstract fromRaw(raw: string): Partial<T>;
-  protected abstract toRaw(value: Partial<T>): string;
-  protected abstract merge(oldValue: Partial<T>, value: Partial<T>): Partial<T>;
+  protected abstract fromRaw(raw: string): T;
+  protected abstract toRaw(value: T): string;
+  protected abstract merge(oldValue: T, value: TUpdate): T;
 
-  async init(value: TCreate): Promise<void> {
+  async init(value: T): Promise<void> {
     const exists = await this.exists();
 
     if (!exists) {
@@ -41,7 +41,7 @@ export abstract class FileRepository<T, TCreate, TUpdate> {
     }
   }
 
-  async create(value: TCreate): Promise<Partial<T>> {
+  async create(value: T): Promise<T> {
     const newValue = cloneDeep(value);
 
     await this.writeFile(newValue, { flag: "wx" });
@@ -49,11 +49,11 @@ export abstract class FileRepository<T, TCreate, TUpdate> {
     return newValue;
   }
 
-  async read(): Promise<Partial<T>> {
+  async read(): Promise<T> {
     return await this.readFile();
   }
 
-  async update(value: TUpdate): Promise<Partial<T>> {
+  async update(value: TUpdate): Promise<T> {
     const oldValue = await this.readFile();
     const newValue = this.merge(oldValue, value);
 
@@ -74,7 +74,7 @@ export abstract class FileRepository<T, TCreate, TUpdate> {
     }
   }
 
-  protected async readFile(options?: ReadOptions): Promise<Partial<T>> {
+  protected async readFile(options?: ReadOptions): Promise<T> {
     const raw = await safeReadFile(this.filePath, options);
     const value = this.fromRaw(raw.toString());
 
@@ -82,9 +82,9 @@ export abstract class FileRepository<T, TCreate, TUpdate> {
   }
 
   protected async writeFile(
-    value: Partial<T>,
+    value: T,
     options?: WriteOptions,
-    doLock?: boolean
+    doLock?: boolean,
   ): Promise<void> {
     const raw = this.toRaw(value);
 

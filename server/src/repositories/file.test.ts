@@ -47,7 +47,7 @@ describe("FileRepository", () => {
       const value = "test";
       const newValue = "new test";
 
-      vol.mkdirpSync(path.dirname(filePathWithDir));
+      vol.mkdirSync(path.dirname(filePathWithDir), { recursive: true });
       await fs.writeFile(filePath, value);
 
       await repository.init(newValue);

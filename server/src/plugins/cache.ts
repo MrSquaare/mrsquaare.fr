@@ -2,6 +2,7 @@ import { FastifyPluginCallback, FastifyRequest } from "fastify";
 import fp from "fastify-plugin";
 import NodeCache from "node-cache";
 
+import { sendResponse } from "../helpers";
 import { LOGGER } from "../logger";
 
 const DEFAULT_TTL = 60 * 60; // 1 hour
@@ -29,7 +30,7 @@ const cb: FastifyPluginCallback<CacheOptions> = (server, opts, done) => {
 
     LOGGER.debug(`Cache hit: ${cacheKey}`);
 
-    reply.send(JSON.parse(payload));
+    sendResponse(reply, JSON.parse(payload));
 
     done();
   });
