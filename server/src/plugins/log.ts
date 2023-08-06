@@ -12,7 +12,7 @@ const cb: FastifyPluginCallback = (server, opts, done) => {
     const responseTime = reply.getResponseTime().toPrecision(3);
 
     LOGGER.debug(
-      `${request.method} ${request.url} ${reply.statusCode} ${responseTime}ms`
+      `${request.method} ${request.url} ${reply.statusCode} ${responseTime}ms`,
     );
 
     done();

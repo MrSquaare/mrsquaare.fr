@@ -12,7 +12,7 @@ type Returned = {
 
 export const useAPI = (
   route: string,
-  config?: AxiosRequestConfig
+  config?: AxiosRequestConfig,
 ): Returned => {
   const { data, error } = useSWR(route, fetchApi(config));
 

@@ -140,7 +140,7 @@ export const articlesRouter: FastifyPluginAsync = async (server) => {
       };
 
       return sendResponse(reply, data);
-    }
+    },
   );
 
   server.post<{
@@ -164,7 +164,7 @@ export const articlesRouter: FastifyPluginAsync = async (server) => {
         status: 201,
         data: { article },
       });
-    }
+    },
   );
 
   server.get<{
@@ -186,7 +186,7 @@ export const articlesRouter: FastifyPluginAsync = async (server) => {
         status: 200,
         data: { article },
       });
-    }
+    },
   );
 
   server.post<{
@@ -212,7 +212,7 @@ export const articlesRouter: FastifyPluginAsync = async (server) => {
         status: 200,
         data: { article },
       });
-    }
+    },
   );
 
   server.delete<{
@@ -235,6 +235,6 @@ export const articlesRouter: FastifyPluginAsync = async (server) => {
       return sendResponse(reply, {
         status: 200,
       });
-    }
+    },
   );
 };

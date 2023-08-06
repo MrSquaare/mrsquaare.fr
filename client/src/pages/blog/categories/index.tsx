@@ -36,7 +36,7 @@ const CategoriesPage: NextPage = () => {
         </Hero>
       </div>
       <hr className={"border-base-200"} />
-      <div className={"container mx-auto h-full py-8 px-4"}>
+      <div className={"container mx-auto h-full px-4 py-8"}>
         {error && (
           <Alert className={"mb-4"} status={"error"}>
             {error.message}

@@ -13,19 +13,14 @@ type Props = {
 export const CategoryCard: FC<Props> = ({ category }) => {
   return (
     <Link href={`/blog/categories/${category.id}`}>
-      <a>
-        <Card className={"bg-base-200"} imageFull>
-          <Card.Image
-            alt={"Image"}
-            src={urlJoin(API_BASE_URL, category.image)}
-          />
-          <Card.Body className={"d-flex items-center justify-center"}>
-            <Card.Title className={"text-3xl"} tag={"h2"}>
-              {category.name}
-            </Card.Title>
-          </Card.Body>
-        </Card>
-      </a>
+      <Card className={"bg-base-200"} imageFull>
+        <Card.Image alt={"Image"} src={urlJoin(API_BASE_URL, category.image)} />
+        <Card.Body className={"d-flex items-center justify-center"}>
+          <Card.Title className={"text-3xl"} tag={"h2"}>
+            {category.name}
+          </Card.Title>
+        </Card.Body>
+      </Card>
     </Link>
   );
 };

@@ -15,7 +15,7 @@ export const HomeContent: FC = () => {
     <div className={"flex h-full flex-col justify-center md:flex-row"}>
       <div
         className={
-          "mr-0 mb-4 flex flex-col justify-center md:mr-4 md:mb-0 md:flex-[5]"
+          "mb-4 mr-0 flex flex-col justify-center md:mb-0 md:mr-4 md:flex-[5]"
         }
       >
         <div
@@ -26,7 +26,7 @@ export const HomeContent: FC = () => {
           </div>
           <h1
             className={
-              "mt-0 ml-2 text-center text-2xl md:mt-4 md:ml-0 md:text-4xl"
+              "ml-2 mt-0 text-center text-2xl md:ml-0 md:mt-4 md:text-4xl"
             }
           >
             <code>Hello, World!</code>
@@ -35,7 +35,7 @@ export const HomeContent: FC = () => {
       </div>
       <div
         className={
-          "mt-4 ml-0 flex flex-col justify-center md:mt-0 md:ml-4 md:flex-[7]"
+          "ml-0 mt-4 flex flex-col justify-center md:ml-4 md:mt-0 md:flex-[7]"
         }
       >
         <div>
@@ -45,14 +45,14 @@ export const HomeContent: FC = () => {
           </h2>
           <p className={"mb-4"}>{t("content.body", { lng: locale })}</p>
           <a
-            className={"btn btn-lg mr-2 mb-2"}
+            className={"btn btn-lg mb-2 mr-2"}
             href={"mailto:contact@mrsquaare.fr"}
           >
             <InlineIcon className={"mr-1"} icon={envelopeIcon} />
             {t("links.contact", { lng: locale })}
           </a>
           <a
-            className={"btn btn-lg mr-2 mb-2"}
+            className={"btn btn-lg mb-2 mr-2"}
             href={"https://github.com/MrSquaare"}
             rel={"noreferrer"}
             target={"_blank"}
@@ -61,7 +61,7 @@ export const HomeContent: FC = () => {
             {t("links.github", { lng: locale })}
           </a>
           <a
-            className={"btn btn-lg mr-2 mb-2"}
+            className={"btn btn-lg mb-2 mr-2"}
             href={"https://twitter.com/MrSquaare"}
             rel={"noreferrer"}
             target={"_blank"}

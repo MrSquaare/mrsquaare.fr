@@ -112,7 +112,7 @@ export const categoriesRouter: FastifyPluginCallback = async (server) => {
       };
 
       return sendResponse(reply, data);
-    }
+    },
   );
 
   server.post<{
@@ -136,7 +136,7 @@ export const categoriesRouter: FastifyPluginCallback = async (server) => {
         status: 201,
         data: { category },
       });
-    }
+    },
   );
 
   server.get<{
@@ -158,7 +158,7 @@ export const categoriesRouter: FastifyPluginCallback = async (server) => {
         status: 200,
         data: { category },
       });
-    }
+    },
   );
 
   server.post<{
@@ -184,7 +184,7 @@ export const categoriesRouter: FastifyPluginCallback = async (server) => {
         status: 200,
         data: { category },
       });
-    }
+    },
   );
 
   server.delete<{
@@ -207,6 +207,6 @@ export const categoriesRouter: FastifyPluginCallback = async (server) => {
       return sendResponse(reply, {
         status: 200,
       });
-    }
+    },
   );
 };

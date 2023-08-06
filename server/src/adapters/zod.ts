@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { APIIssue } from "@common/types";
 import { JSONObject } from "@fastify/swagger";
 import { FastifySchema, FastifyTypeProvider } from "fastify";

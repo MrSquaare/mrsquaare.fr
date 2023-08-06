@@ -36,6 +36,6 @@ export const authRouter: FastifyPluginCallback = (server) => {
         status: 200,
         data: { token },
       });
-    }
+    },
   );
 };

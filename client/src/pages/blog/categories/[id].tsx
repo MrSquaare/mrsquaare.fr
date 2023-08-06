@@ -24,10 +24,10 @@ const CategoryPage: NextPage<Props> = ({ id }) => {
   return (
     <>
       <Head>
-        <title>{`${category?.name} - ${WEBSITE_TITLE}`}</title>
+        <title>{`${category?.name ?? "..."} - ${WEBSITE_TITLE}`}</title>
       </Head>
       {(articlesError || categoryError) && (
-        <div className={"container mx-auto py-8 px-4"}>
+        <div className={"container mx-auto px-4 py-8"}>
           <Alert className={"mb-4"} status={"error"}>
             {articlesError?.message || null}
             {categoryError?.message || null}
@@ -46,7 +46,7 @@ const CategoryPage: NextPage<Props> = ({ id }) => {
             </Hero>
           </div>
           <hr className={"border-base-200"} />
-          <div className={"container mx-auto py-8 px-4"}>
+          <div className={"container mx-auto px-4 py-8"}>
             <ArticleList
               articles={articles.filter((article) => {
                 return article.categories.includes(category.id);

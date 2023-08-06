@@ -15,9 +15,18 @@
     {
       "name": "server",
       "path": "./server"
-    }
+    },
   ],
   "settings": {
-    "jest.disabledWorkspaceFolders": ["root", "client", "common"]
+    "jest.disabledWorkspaceFolders": [
+      "root",
+      "client",
+      "common",
+      "server",
+    ],
+    "i18n-ally.localesPaths": [
+      "client/src/i18n",
+      "client/src/i18n/langs"
+    ]
   }
 }

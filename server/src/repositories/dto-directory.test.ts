@@ -44,7 +44,7 @@ describe("DTOFileRepository", () => {
 
   beforeEach(() => {
     vol.reset();
-    vol.mkdirpSync(dirPath);
+    vol.mkdirSync(dirPath, { recursive: true });
   });
 
   afterAll(() => {
@@ -74,7 +74,7 @@ describe("DTOFileRepository", () => {
           const got = JSON.parse(gotRaw);
 
           expect(got).toEqual(data);
-        })
+        }),
       );
     });
   });
@@ -92,9 +92,9 @@ describe("DTOFileRepository", () => {
         sampleDTODirectoryIds.map((id, index) =>
           fs.writeFile(
             `${dirPath}/${id}.json`,
-            JSON.stringify(sampleDTODirectoryContents[index])
-          )
-        )
+            JSON.stringify(sampleDTODirectoryContents[index]),
+          ),
+        ),
       );
 
       const expected = sampleDTOs;
@@ -129,9 +129,9 @@ describe("DTOFileRepository", () => {
         sampleDTODirectoryIds.map((id, index) =>
           fs.writeFile(
             `${dirPath}/${id}.json`,
-            JSON.stringify(sampleDTODirectoryContents[index])
-          )
-        )
+            JSON.stringify(sampleDTODirectoryContents[index]),
+          ),
+        ),
       );
 
       const dtoId = "danDummy";
@@ -165,11 +165,11 @@ describe("DTOFileRepository", () => {
 
       await fs.writeFile(
         `${dirPath}/${dtoId}.json`,
-        JSON.stringify(fileContent)
+        JSON.stringify(fileContent),
       );
 
       await expect(repository.create(dtoId, value)).rejects.toBeInstanceOf(
-        DTOAlreadyExistsException
+        DTOAlreadyExistsException,
       );
     });
   });
@@ -188,7 +188,7 @@ describe("DTOFileRepository", () => {
 
       await fs.writeFile(
         `${dirPath}/${dtoId}.json`,
-        JSON.stringify(fileContent)
+        JSON.stringify(fileContent),
       );
 
       const expected = {
@@ -204,7 +204,7 @@ describe("DTOFileRepository", () => {
       const dtoId = "danDummy";
 
       await expect(repository.read(dtoId)).rejects.toBeInstanceOf(
-        DTONotFoundException
+        DTONotFoundException,
       );
     });
   });
@@ -222,7 +222,7 @@ describe("DTOFileRepository", () => {
 
       await fs.writeFile(
         `${dirPath}/${dtoId}.json`,
-        JSON.stringify(fileContent)
+        JSON.stringify(fileContent),
       );
 
       const expected = {
@@ -242,7 +242,7 @@ describe("DTOFileRepository", () => {
       };
 
       await expect(repository.update(dtoId, value)).rejects.toBeInstanceOf(
-        DTONotFoundException
+        DTONotFoundException,
       );
     });
   });
@@ -261,7 +261,7 @@ describe("DTOFileRepository", () => {
 
       await fs.writeFile(
         `${dirPath}/${dtoId}.json`,
-        JSON.stringify(fileContent)
+        JSON.stringify(fileContent),
       );
 
       await repository.delete(dtoId);
@@ -273,7 +273,7 @@ describe("DTOFileRepository", () => {
       const dtoId = "dummy";
 
       await expect(repository.delete(dtoId)).rejects.toBeInstanceOf(
-        DTONotFoundException
+        DTONotFoundException,
       );
     });
   });

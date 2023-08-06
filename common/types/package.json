@@ -8,10 +8,10 @@
     "build": "tsc",
     "lint": "eslint src/",
     "format": "eslint --fix src/",
-    "clean": "rm -rf dist/",
-    "fclean": "npm run clean && rm -rf node_modules/"
+    "clean": "rimraf dist/",
+    "fclean": "npm run clean && rimraf node_modules/"
   },
   "devDependencies": {
-    "typescript": "^4.7.4"
+    "typescript": "^5.1.6"
   }
 }

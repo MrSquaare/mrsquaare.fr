@@ -7,7 +7,7 @@ import { ReadOptions, WriteOptions } from "../types";
 const lockOperation = async <T>(
   filePath: string,
   callback: () => Promise<T>,
-  doLock = true
+  doLock = true,
 ): Promise<T> => {
   const release = doLock ? await lock(filePath) : undefined;
 
@@ -23,14 +23,14 @@ const lockOperation = async <T>(
 export const safeReadFile = async (
   filePath: string,
   options?: ReadOptions,
-  doLock = true
+  doLock = true,
 ): Promise<string> => {
   const raw = await lockOperation(
     filePath,
     async () => {
       return fs.readFile(filePath, options);
     },
-    doLock
+    doLock,
   );
 
   return raw.toString();
@@ -40,26 +40,26 @@ export const safeWriteFile = async (
   filePath: string,
   data: string,
   options?: WriteOptions,
-  doLock = true
+  doLock = true,
 ): Promise<void> => {
   await lockOperation(
     filePath,
     async () => {
       return fs.writeFile(filePath, data, options);
     },
-    doLock
+    doLock,
   );
 };
 
 export const safeDeleteFile = async (
   filePath: string,
-  doLock = true
+  doLock = true,
 ): Promise<void> => {
   await lockOperation(
     filePath,
     async () => {
       return fs.unlink(filePath);
     },
-    doLock
+    doLock,
   );
 };

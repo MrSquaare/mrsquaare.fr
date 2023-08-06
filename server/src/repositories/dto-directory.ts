@@ -7,32 +7,26 @@ import { DirectoryRepository } from "./directory";
 
 export type DTODirectory<T extends DTO> = Omit<T, "id">;
 
-export type DTODirectoryCreate<T extends DTO> = DTODirectory<T>;
-
-export type DTODirectoryUpdate<T extends DTO> = Partial<DTODirectoryCreate<T>>;
-
 export abstract class DTODirectoryRepository<
   T extends DTO,
   TCreate extends Omit<T, "id">,
-  TUpdate extends Partial<TCreate>
+  TUpdate extends Partial<TCreate>,
 > implements DTORepository<T, TCreate, TUpdate>
 {
   protected repository: DirectoryRepository<
-    DTODirectory<T>,
-    DTODirectoryCreate<T>,
-    DTODirectoryUpdate<T>
+    Partial<DTODirectory<T>>,
+    Partial<DTODirectory<T>>
   >;
   protected fileExt: string;
 
   constructor(dirPath: string, fileExt: string) {
     this.repository = new (class extends DirectoryRepository<
-      DTODirectory<T>,
-      DTODirectoryCreate<T>,
-      DTODirectoryUpdate<T>
+      Partial<DTODirectory<T>>,
+      Partial<DTODirectory<T>>
     > {
       constructor(
         dirPath: string,
-        private parentThis: DTODirectoryRepository<T, TCreate, TUpdate>
+        private parentThis: DTODirectoryRepository<T, TCreate, TUpdate>,
       ) {
         super(dirPath);
       }
@@ -47,7 +41,7 @@ export abstract class DTODirectoryRepository<
 
       protected merge(
         oldValue: Partial<DTODirectory<T>>,
-        value: Partial<DTODirectory<T>>
+        value: Partial<DTODirectory<T>>,
       ): Partial<DTODirectory<T>> {
         return { ...oldValue, ...value };
       }
@@ -76,12 +70,9 @@ export abstract class DTODirectoryRepository<
     return values;
   }
 
-  async create(id: string, value: TCreate): Promise<Partial<T>> {
+  async create(id: T["id"], value: TCreate): Promise<Partial<T>> {
     try {
-      const newValue: Partial<DTODirectory<T>> = await this.repository.create(
-        id + this.fileExt,
-        value
-      );
+      const newValue = await this.repository.create(id + this.fileExt, value);
 
       return { ...newValue, id } as Partial<T>;
     } catch (e) {
@@ -89,11 +80,9 @@ export abstract class DTODirectoryRepository<
     }
   }
 
-  async read(id: string): Promise<Partial<T>> {
+  async read(id: T["id"]): Promise<Partial<T>> {
     try {
-      const value: Partial<DTODirectory<T>> = await this.repository.read(
-        id + this.fileExt
-      );
+      const value = await this.repository.read(id + this.fileExt);
 
       return { ...value, id } as Partial<T>;
     } catch (e) {
@@ -101,12 +90,9 @@ export abstract class DTODirectoryRepository<
     }
   }
 
-  async update(id: string, value: TUpdate): Promise<Partial<T>> {
+  async update(id: T["id"], value: TUpdate): Promise<Partial<T>> {
     try {
-      const newValue: Partial<DTODirectory<T>> = await this.repository.update(
-        id + this.fileExt,
-        value
-      );
+      const newValue = await this.repository.update(id + this.fileExt, value);
 
       return { ...newValue, id } as Partial<T>;
     } catch (e) {
@@ -114,7 +100,7 @@ export abstract class DTODirectoryRepository<
     }
   }
 
-  async delete(id: string): Promise<void> {
+  async delete(id: T["id"]): Promise<void> {
     try {
       await this.repository.delete(id + this.fileExt);
     } catch (e) {

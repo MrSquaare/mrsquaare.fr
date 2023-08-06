@@ -1,7 +1,6 @@
 import arrowUpIcon from "@iconify/icons-fa-solid/arrow-up";
 import { Icon } from "@iconify/react";
 import classNames from "classnames";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { FC, useCallback, useEffect, useState } from "react";
 import { Button, Tooltip } from "react-daisyui";
@@ -43,11 +42,9 @@ export const ScrollToTop: FC = () => {
         className={"tooltip-left"}
         message={t("scrollToTop.tooltip", { lng: locale })}
       >
-        <Link href={"#"}>
-          <Button onClick={scrollToTop}>
-            <Icon height={20} icon={arrowUpIcon} />
-          </Button>
-        </Link>
+        <Button onClick={scrollToTop}>
+          <Icon height={20} icon={arrowUpIcon} />
+        </Button>
       </Tooltip>
     </div>
   );
