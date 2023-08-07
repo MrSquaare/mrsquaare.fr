@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/MrSquaare/mrsquaare.fr/compare/client@1.1.0...client@1.1.1) (2023-08-07)
+
+
+### Bug Fixes
+
+* quality update ([9aa08c1](https://github.com/MrSquaare/mrsquaare.fr/commit/9aa08c1b7b145d9c869dbd2df879793b15ad4101))
+
 ## [1.1.0](https://github.com/MrSquaare/mrsquaare.fr/compare/client@1.0.0...client@1.1.0) (2022-08-21)
 
 
