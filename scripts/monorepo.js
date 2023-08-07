@@ -5,31 +5,6 @@ const path = require("path");
 const CWD = process.cwd();
 const packageJson = require(path.join(CWD, "package.json"));
 
-const npmLocalPath = cp.execSync("npm root").toString();
-const npmGlobalPath = cp.execSync("npm root -g").toString();
-
-const isLocalModule = (name) => {
-  return fs.existsSync(path.join(npmLocalPath, name));
-};
-
-const isGlobalModule = (name) => {
-  return fs.existsSync(path.join(npmGlobalPath, name));
-};
-
-const importModule = async (name) => {
-  const indexJSPath = path.join(name, "index.js");
-
-  if (isLocalModule(name)) {
-    return import(path.join(npmLocalPath, indexJSPath));
-  }
-
-  if (isGlobalModule(name)) {
-    return import(path.join(npmGlobalPath, indexJSPath));
-  }
-
-  return import(name);
-};
-
 const defaultConfig = {
   plugins: [
     "@semantic-release/commit-analyzer",
@@ -38,6 +13,39 @@ const defaultConfig = {
     "@semantic-release/github",
   ],
   tagFormat: "v${version}",
+};
+
+const npmLocalPath = cp.execSync("npm root").toString().trim();
+const npmGlobalPath = cp.execSync("npm root -g").toString().trim();
+
+const importModule = async (name) => {
+  const indexJSPath = `${name}/index.js`;
+
+  if (fs.existsSync(`${npmLocalPath}/${indexJSPath}`)) {
+    return import(`${npmLocalPath}/${indexJSPath}`);
+  }
+
+  if (fs.existsSync(`${npmGlobalPath}/${indexJSPath}`)) {
+    return import(`${npmGlobalPath}/${indexJSPath}`);
+  }
+
+  return import(name);
+};
+
+const getPlugin = async (pluginInfo) => {
+  const name = typeof pluginInfo === "string" ? pluginInfo : pluginInfo[0];
+  const config = typeof pluginInfo === "string" ? {} : pluginInfo[1];
+  const module = await importModule(name);
+
+  return {
+    name,
+    config,
+    module,
+  };
+};
+
+const getPlugins = async (pluginsInfo) => {
+  return Promise.all(pluginsInfo.map((info) => getPlugin(info)));
 };
 
 const exec = async (command, args) => {
@@ -147,37 +155,19 @@ const generateNotes = (plugin, options) => {
   };
 };
 
-const getPlugin = async (pluginInfo) => {
-  const name = typeof pluginInfo === "string" ? pluginInfo : pluginInfo[0];
-  const config = typeof pluginInfo === "string" ? {} : pluginInfo[1];
-  const module = await importModule(name);
-
-  return {
-    name,
-    config,
-    module,
-  };
-};
-
 const filterPluginsByStep = (plugins, stepName) => {
   return plugins.filter((plugin) => {
     return typeof plugin.module[stepName] === "function";
   });
 };
 
-const getAnalyzeCommits = async (config, options) => {
-  const pluginsInfo = config.plugins;
-  const plugins = await Promise.all(pluginsInfo.map((info) => getPlugin(info)));
-
+const getAnalyzeCommits = (plugins, options) => {
   return filterPluginsByStep(plugins, "analyzeCommits").map((plugin) =>
     analyzeCommits(plugin, options),
   );
 };
 
-const getGenerateNotes = async (config, options) => {
-  const pluginsInfo = config.plugins;
-  const plugins = await Promise.all(pluginsInfo.map((info) => getPlugin(info)));
-
+const getGenerateNotes = (plugins, options) => {
   return filterPluginsByStep(plugins, "generateNotes").map((plugin) =>
     generateNotes(plugin, options),
   );
@@ -189,15 +179,13 @@ const getTagFormat = (config) => {
   return tagFormatConfig.replace(/\${packageName}/g, packageJson.name);
 };
 
-const getMonorepoConfig = (config, options) => {
-  config = {
-    ...defaultConfig,
-    ...config,
-  };
+const getMonorepoConfig = async (config, options) => {
+  const plugins = await getPlugins(config.plugins);
 
   return {
-    analyzeCommits: async () => getAnalyzeCommits(config, options),
-    generateNotes: async () => getGenerateNotes(config, options),
+    ...config,
+    analyzeCommits: getAnalyzeCommits(plugins, options),
+    generateNotes: getGenerateNotes(plugins, options),
     tagFormat: getTagFormat(config),
   };
 };
@@ -208,10 +196,12 @@ const withMonorepo = (
     includeFilePaths: [],
   },
 ) => {
-  return {
+  config = {
+    ...defaultConfig,
     ...config,
-    ...getMonorepoConfig(config, options),
   };
+
+  return getMonorepoConfig(config, options);
 };
 
 module.exports = withMonorepo;
