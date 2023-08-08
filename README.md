@@ -1,11 +1,10 @@
 # mrsquaare.fr
 
-MrSquaare's personal website
+MrSquaare's personal website (lite version)
 
 ## Table of Contents
 
 - [About](#about)
-  - [Context and motivations](#context-and-motivations)
 - [Getting started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
@@ -17,26 +16,16 @@ MrSquaare's personal website
 
 This repository is a [monorepo](https://en.wikipedia.org/wiki/Monorepo), powered by [Turborepo](https://turborepo.org/).
 
-It is composed of two main projects:
+It is only composed of one main project for the lite version:
 
-- the [Client](client), powered by [Next.js](https://nextjs.org/)
-- the [Server](server), powered by [Fastify](https://www.fastify.io/)
-
-The packages common to both projects can be found in [common](common)
-
-### Context and motivations
-
-My goal is to develop a powerful and secure website using modern technologies, while following good practices.
-
-Therefore, if you notice any performance or security issues, or want to make a feedback about the code, please open an issue following the [guidelines](GUIDELINES.md#issue).
-
-Thank you!
+- the [Web App](web-app), powered by [Next.js](https://nextjs.org/)
 
 ## Getting started
 
 ### Prerequisites
 
 1. [Install Node.js](https://nodejs.org/en/download/)
+2. [Install pnpm](https://pnpm.io/installation)
 
 ### Installation
 
@@ -44,26 +33,28 @@ Thank you!
 
 ```shell script
 git clone https://github.com/MrSquaare/mrsquaare.fr.git
+cd mrsquaare.fr
+git checkout lite
 ```
 
 2. Install dependencies:
 
 ```shell script
-npm install
+pnpm install
 ```
 
 3. Build the project:
 
 ```shell script
-npm run build
+pnpm build
 ```
 
 ## Using
 
-Start the client and the server:
+Start the servers:
 
 ```shell script
-npm run start
+pnpm start
 ```
 
 ## Contributing

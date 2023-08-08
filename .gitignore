@@ -4,8 +4,11 @@
 # Node
 node_modules/
 
-# Turbo
+# Turborepo
 .turbo/
+
+# Next.js
+next-env.d.ts
 
 # Builds
 .next/

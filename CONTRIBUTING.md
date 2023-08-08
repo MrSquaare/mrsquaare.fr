@@ -17,6 +17,7 @@ See [GUIDELINES.md](GUIDELINES.md) for more information.
 ### Prerequisites
 
 1. [Install Node.js](https://nodejs.org/en/download/)
+2. [Install pnpm](https://pnpm.io/installation)
 
 ### Installation
 
@@ -24,20 +25,22 @@ See [GUIDELINES.md](GUIDELINES.md) for more information.
 
 ```shell script
 git clone https://github.com/MrSquaare/mrsquaare.fr.git
+cd mrsquaare.fr
+git checkout lite
 ```
 
 2. Install dependencies:
 
 ```shell script
-npm install
+pnpm install
 ```
 
 ## Developing
 
-Start the development server:
+Start the development servers:
 
 ```shell script
-npm run dev
+pnpm dev
 ```
 
 ## Testing
@@ -45,11 +48,11 @@ npm run dev
 Lint the code:
 
 ```shell script
-npm run lint
+pnpm lint
 ```
 
 Format the code:
 
 ```shell script
-npm run format
+pnpm format
 ```
