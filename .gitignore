@@ -2,29 +2,25 @@
 **/.env*
 
 # Node
-node_modules/
-
-# Turborepo
-.turbo/
+**/node_modules/
 
 # Next.js
 next-env.d.ts
 
+# Turborepo
+**/.turbo/
+
 # Builds
-.next/
-dist/
-out/
+**/.next/
+**/.swc/
+**/dist/
+**/out/
 
 # Tests
-coverage/
+**/coverage/
 
-# Server data
-server/data/
-
-# Jetbrains
+# Editors and IDEs
 .idea/
-
-# VSCode
 .vscode/*
 !.vscode/extensions.json
 !.vscode/launch.json

@@ -5,6 +5,7 @@ ENV APP_DIRECTORY="/usr/src/app"
 
 ENV PATH="${PATH}:${PNPM_HOME}"
 ENV PATH="${PATH}:${APP_DIRECTORY}/node_modules/.bin/"
+ENV PATH="${PATH}:${APP_DIRECTORY}/web-app/node_modules/.bin/"
 ENV NEXT_TELEMETRY_DISABLED="1"
 
 RUN corepack enable pnpm
@@ -31,7 +32,9 @@ COPY --from=build ${APP_DIRECTORY}/web-app/next.config.js ./web-app
 COPY --from=build ${APP_DIRECTORY}/web-app/.next/ ./web-app/.next/
 COPY --from=build ${APP_DIRECTORY}/web-app/public/ ./web-app/public/
 
-RUN pnpm i --prod
+ENV NODE_ENV="production"
+
+RUN pnpm i
 
 RUN pnpm store prune
 

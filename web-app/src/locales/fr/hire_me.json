@@ -1,0 +1,48 @@
+{
+  "page": {
+    "title": "Recrutez-moi"
+  },
+  "nav": {
+    "home": "Accueil",
+    "download_as_pdf": "Télécharger en PDF"
+  },
+  "job_title": "Développeur web et mobile full-stack",
+  "about_me": {
+    "title": "À propos de moi",
+    "content": "Passionné par le développement, je me suis spécifiquement orienté vers les univers du web et du mobile et y ait construit mon expertise. Je m'investis pleinement dans les projets sur lesquels je travaille. Je cherche constamment à me perfectionner et ma curiosité me pousse à explorer de nouvelles technologies."
+  },
+  "languages": {
+    "title": "Langues",
+    "french": "Français (langue maternelle)",
+    "english": "Anglais (courant)"
+  },
+  "contacts": {
+    "title": "Contacts"
+  },
+  "experiences": {
+    "title": "Expériences",
+    "type": {
+      "0": "Stage",
+      "1": "Alternance"
+    },
+    "date": {
+      "from-to": "De {{fromDate}} à {{toDate}}",
+      "since": "Depuis {{date}}"
+    }
+  },
+  "educations": {
+    "title": "Formations",
+    "date": {
+      "from-to": "De {{fromDate}} à {{toDate}}"
+    }
+  },
+  "skills": {
+    "title": "Compétences",
+    "years_one": "{{count}} an",
+    "years_other": "{{count}} ans"
+  },
+  "projects": {
+    "title": "Projets",
+    "in_development": "En cours de développement"
+  }
+}
