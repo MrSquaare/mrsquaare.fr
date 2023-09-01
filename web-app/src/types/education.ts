@@ -3,8 +3,8 @@ import { LanguageString } from "./i18n";
 export type Education = {
   title: LanguageString;
   specialty?: LanguageString;
-  school: string;
-  location: string;
+  school: LanguageString;
+  location: LanguageString;
   startDate: string;
   endDate: string;
 };

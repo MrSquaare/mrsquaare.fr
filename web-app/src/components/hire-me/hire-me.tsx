@@ -18,6 +18,7 @@ import {
 } from "../../constants/link";
 import { iconByTechnology, nameByTechnology } from "../../constants/technology";
 import { useTranslation } from "../../i18n/client";
+import { getLanguageString } from "../../utilities/i18n";
 import { AspectRatio } from "../ui/aspect-ratio";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Badge } from "../ui/badge";
@@ -43,10 +44,7 @@ export const HireMe: FC = () => {
         }
       >
         <Avatar className={"h-40 w-40"}>
-          <AvatarImage
-            alt={"MrSquaare"}
-            src={"https://api.dicebear.com/6.x/thumbs/svg?seed=Abby"}
-          />
+          <AvatarImage alt={"MrSquaare"} src={"/hire-me-picture.jpg"} />
           <AvatarFallback>GB</AvatarFallback>
         </Avatar>
         <div>
@@ -157,11 +155,12 @@ export const HireMe: FC = () => {
                       <Card key={index}>
                         <CardHeader>
                           <CardTitle className={"text-xl"}>
-                            {experience.title[lng]} -{" "}
+                            {getLanguageString(experience.title, lng)} -{" "}
                             {t(`experiences.type.${experience.type}`)}
                           </CardTitle>
                           <CardDescription>
-                            {experience.company} - {experience.location} -{" "}
+                            {getLanguageString(experience.company, lng)} -{" "}
+                            {getLanguageString(experience.location, lng)} -{" "}
                             {t(`experiences.date.from-to`, {
                               fromDate: startDateStr,
                               toDate: endDateStr,
@@ -171,7 +170,9 @@ export const HireMe: FC = () => {
                         <CardContent>
                           <ul className={"ml-4 list-disc"}>
                             {experience.missions.map((mission, index) => (
-                              <li key={index}>{mission[lng]}</li>
+                              <li key={index}>
+                                {getLanguageString(mission, lng)}
+                              </li>
                             ))}
                           </ul>
                         </CardContent>
@@ -209,13 +210,17 @@ export const HireMe: FC = () => {
                       <Card key={index}>
                         <CardHeader>
                           <CardTitle className={"text-xl"}>
-                            {education.title[lng]}
+                            {getLanguageString(education.title, lng)}
                             {education.specialty ? (
-                              <> - {education.specialty[lng]}</>
+                              <>
+                                {" "}
+                                - {getLanguageString(education.specialty, lng)}
+                              </>
                             ) : null}
                           </CardTitle>
                           <CardDescription>
-                            {education.school} - {education.location} -{" "}
+                            {getLanguageString(education.school, lng)} -{" "}
+                            {getLanguageString(education.location, lng)} -{" "}
                             {t(`experiences.date.from-to`, {
                               fromDate: startDateStr,
                               toDate: endDateStr,
@@ -287,7 +292,7 @@ export const HireMe: FC = () => {
                       <CardHeader>
                         <div className={"flex flex-row flex-wrap items-center"}>
                           <CardTitle className={"text-xl"}>
-                            {project.title}
+                            {getLanguageString(project.title, lng)}
                           </CardTitle>
                           {project.inDevelopment ? (
                             <Badge className={"ml-auto"} variant={"outline"}>
@@ -297,32 +302,32 @@ export const HireMe: FC = () => {
                         </div>
                       </CardHeader>
                       <CardContent>
-                        <p>{project.description[lng]}</p>
+                        <p>{getLanguageString(project.description, lng)}</p>
                       </CardContent>
                       <CardFooter>
                         <div>
                           <div className={"mb-2 flex flex-wrap gap-1"}>
                             {project.technologies.map((technology, index) => (
-                              <Badge key={index}>
-                                <Icon
-                                  className={"mr-1"}
-                                  icon={iconByTechnology[technology]}
-                                />
+                              <Badge
+                                className={"flex items-center gap-1"}
+                                key={index}
+                              >
+                                <Icon icon={iconByTechnology[technology]} />
                                 <span>{nameByTechnology[technology]}</span>
                               </Badge>
                             ))}
                           </div>
-                          <div>
+                          <div className={"flex flex-wrap gap-2"}>
                             {project.links.map((link, index) => (
                               <Link
-                                className={"flex items-center gap-1"}
+                                className={"flex items-center gap-0.5"}
                                 href={link.url}
                                 key={index}
                                 referrerPolicy={"no-referrer"}
                                 target={"_blank"}
                               >
                                 <Icon icon={link.icon} />
-                                {link.title}
+                                {getLanguageString(link.title, lng)}
                               </Link>
                             ))}
                           </div>

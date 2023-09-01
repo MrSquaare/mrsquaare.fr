@@ -140,6 +140,14 @@ export const skills: Skill[] = [
     years: 2,
   },
   {
+    technology: Technology.SASS,
+    years: 3,
+  },
+  {
+    technology: Technology.TAILWIND_CSS,
+    years: 1,
+  },
+  {
     technology: Technology.REACT_NATIVE,
     years: 3,
   },
@@ -172,10 +180,6 @@ export const skills: Skill[] = [
     years: 2,
   },
   {
-    technology: Technology.TAILWIND_CSS,
-    years: 1,
-  },
-  {
     technology: Technology.DART,
     years: 1,
   },
@@ -184,12 +188,53 @@ export const skills: Skill[] = [
     years: 1,
   },
   {
+    technology: Technology.GIT,
+    years: 5,
+  },
+  {
     technology: Technology.DOCKER,
+    years: 3,
+  },
+  {
+    technology: Technology.DEVOPS,
     years: 3,
   },
 ];
 
 export const projects: Project[] = [
+  {
+    title: {
+      en: "mrsquaare.fr (This page)",
+      fr: "mrsquaare.fr (Cette page)",
+    },
+    description: {
+      en: "My personal website.",
+      fr: "Mon site web personnel.",
+    },
+    technologies: [
+      Technology.JAVASCRIPT,
+      Technology.TYPESCRIPT,
+      Technology.REACT,
+      Technology.NEXT_JS,
+      Technology.TAILWIND_CSS,
+      Technology.DOCKER,
+    ],
+    links: [
+      {
+        title: {
+          en: "Website",
+          fr: "Site web",
+        },
+        url: "https://mrsquaare.fr/hire-me",
+        icon: "ph:link",
+      },
+      {
+        title: "GitHub",
+        url: "https://github.com/MrSquaare/mrsquaare.fr",
+        icon: "ph:github-logo",
+      },
+    ],
+  },
   {
     title: "Fiesta",
     description: {
@@ -228,21 +273,6 @@ export const projects: Project[] = [
       {
         title: "GitHub",
         url: "https://github.com/MrSquaare/fiesta",
-        icon: "ph:github-logo",
-      },
-    ],
-  },
-  {
-    title: "SquirrelDB",
-    description: {
-      en: "Cassandra-based time series database (TSDB) with Prometheus remote read/write support.",
-      fr: "Base de données de séries chronologiques (TSDB) basée sur Cassandra et compatible avec la lecture et écriture à distance de Prometheus.",
-    },
-    technologies: [Technology.GO, Technology.CASSANDRA],
-    links: [
-      {
-        title: "GitHub",
-        url: "https://github.com/bleemeo/squirreldb",
         icon: "ph:github-logo",
       },
     ],

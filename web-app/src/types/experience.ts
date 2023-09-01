@@ -9,8 +9,8 @@ export enum ExperienceType {
 export type Experience = {
   title: LanguageString;
   type: ExperienceType;
-  company: string;
-  location: string;
+  company: LanguageString;
+  location: LanguageString;
   startDate: string;
   endDate: string;
   missions: LanguageString[];
