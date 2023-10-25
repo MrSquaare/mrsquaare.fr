@@ -1,6 +1,6 @@
 # mrsquaare.fr
 
-MrSquaare's personal website (lite version)
+MrSquaare's personal website
 
 ## Table of Contents
 
@@ -16,7 +16,7 @@ MrSquaare's personal website (lite version)
 
 This repository is a [monorepo](https://en.wikipedia.org/wiki/Monorepo), powered by [Turborepo](https://turborepo.org/).
 
-It is only composed of one main project for the lite version:
+It is only composed of one main project:
 
 - the [Web App](web-app), powered by [Next.js](https://nextjs.org/)
 
@@ -34,7 +34,6 @@ It is only composed of one main project for the lite version:
 ```shell script
 git clone https://github.com/MrSquaare/mrsquaare.fr.git
 cd mrsquaare.fr
-git checkout lite
 ```
 
 2. Install dependencies:

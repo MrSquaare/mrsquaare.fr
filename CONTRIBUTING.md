@@ -26,7 +26,6 @@ See [GUIDELINES.md](GUIDELINES.md) for more information.
 ```shell script
 git clone https://github.com/MrSquaare/mrsquaare.fr.git
 cd mrsquaare.fr
-git checkout lite
 ```
 
 2. Install dependencies:
