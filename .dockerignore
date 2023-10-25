@@ -1,16 +1,19 @@
 # Dockerfile
 *Dockerfile
 
-# Environment
-**/.env*
-
 # Git
 .git/
+
+# Environment
+**/.env*
 
 # Node
 **/node_modules/
 
-# Turbo
+# Next.js
+next-env.d.ts
+
+# Turborepo
 **/.turbo/
 
 # Builds
@@ -19,9 +22,14 @@
 **/dist/
 **/out/
 
-# Server data
-server/data/
+# Tests
+**/coverage/
 
 # Editors and IDEs
 .idea/
-.vscode/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/*.code-snippets
