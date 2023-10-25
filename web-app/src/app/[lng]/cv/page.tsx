@@ -4,7 +4,7 @@ import Link from "next/link";
 import { PageProps } from "next/navigation";
 import { FC, useCallback } from "react";
 
-import { HireMe } from "../../../components/hire-me/hire-me";
+import { CV } from "../../../components/cv/cv";
 import { Button } from "../../../components/ui/button";
 import { LanguageSwitcher } from "../../../components/ui/language-switcher";
 import {
@@ -15,8 +15,8 @@ import {
 import { ThemeSwitcher } from "../../../components/ui/theme-switcher";
 import { useTranslation } from "../../../i18n/client";
 
-const HireMePage: FC<PageProps> = ({ params: { lng } }) => {
-  const { t } = useTranslation(lng, "hire_me");
+const CVPage: FC<PageProps> = ({ params: { lng } }) => {
+  const { t } = useTranslation(lng, "cv");
 
   const downloadAsPDF = useCallback(() => {
     print();
@@ -55,10 +55,10 @@ const HireMePage: FC<PageProps> = ({ params: { lng } }) => {
         </NavigationMenu>
       </div>
       <main className={"mx-auto min-h-screen max-w-[1024px] p-4"}>
-        <HireMe />
+        <CV />
       </main>
     </>
   );
 };
 
-export default HireMePage;
+export default CVPage;

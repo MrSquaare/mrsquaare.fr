@@ -38,4 +38,10 @@ RUN pnpm i
 
 RUN pnpm store prune
 
-CMD ["next", "start", "web-app/"]
+RUN apk add --no-cache dumb-init
+
+EXPOSE 3000
+
+ENTRYPOINT ["dumb-init", "--"]
+
+CMD ["npm", "run", "start", "-w", "web-app"]

@@ -7,7 +7,7 @@ import { getTranslation } from "../../../i18n/server";
 export async function generateMetadata({
   params: { lng },
 }: MetadataProps): Promise<Metadata> {
-  const { t } = await getTranslation(lng, "hire_me");
+  const { t } = await getTranslation(lng, "cv");
 
   return {
     title: `${t("page.title")} - MrSquaare`,

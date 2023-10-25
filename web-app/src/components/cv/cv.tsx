@@ -3,12 +3,7 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { FC } from "react";
 
-import {
-  educations,
-  experiences,
-  projects,
-  skills,
-} from "../../constants/hire-me";
+import { educations, experiences, projects, skills } from "../../constants/cv";
 import { dateFnsLocales } from "../../constants/i18n";
 import {
   LINKEDIN_LINK,
@@ -32,9 +27,9 @@ import {
 } from "../ui/card";
 import { Icon } from "../ui/icon";
 
-export const HireMe: FC = () => {
+export const CV: FC = () => {
   const { lng } = useParams();
-  const { t } = useTranslation(lng, "hire_me");
+  const { t } = useTranslation(lng, "cv");
 
   return (
     <>
@@ -44,7 +39,7 @@ export const HireMe: FC = () => {
         }
       >
         <Avatar className={"h-40 w-40"}>
-          <AvatarImage alt={"MrSquaare"} src={"/hire-me-picture.jpg"} />
+          <AvatarImage alt={"MrSquaare"} src={"/cv-picture.jpg"} />
           <AvatarFallback>GB</AvatarFallback>
         </Avatar>
         <div>
