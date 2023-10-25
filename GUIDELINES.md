@@ -35,7 +35,7 @@ This branch is subject to restrictions.
 This branch contains the version under development.
 This branch is subject to restrictions.
 
-It is created from and merge in `next`.
+It is created from and merge in `main`.
 
 #### hot/
 
