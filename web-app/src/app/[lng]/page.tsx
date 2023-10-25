@@ -119,8 +119,8 @@ const HomePage: FC<PageProps> = ({ params: { lng } }) => {
           </Tooltip>
         </div>
         <div>
-          <Button asChild className={"text-lg"} size={"lg"}>
-            <Link href={`/${lng}/hire-me`}>{t("hire_me")}</Link>
+          <Button asChild className={"text-lg"} size={"lg"} variant={"outline"}>
+            <Link href={`/${lng}/cv`}>{t("cv")}</Link>
           </Button>
         </div>
       </main>

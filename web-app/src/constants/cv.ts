@@ -225,7 +225,7 @@ export const projects: Project[] = [
           en: "Website",
           fr: "Site web",
         },
-        url: "https://mrsquaare.fr/hire-me",
+        url: "https://mrsquaare.fr/cv",
         icon: "ph:link",
       },
       {
