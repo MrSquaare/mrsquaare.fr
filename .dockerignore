@@ -21,6 +21,7 @@ next-env.d.ts
 **/.swc/
 **/dist/
 **/out/
+**/*.tsbuildinfo
 
 # Tests
 **/coverage/
