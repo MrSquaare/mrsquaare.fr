@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/MrSquaare/mrsquaare.fr/compare/web-app@1.0.1...web-app@1.0.2) (2023-12-17)
+
+
+### Build
+
+* bump dependencies ([2e07758](https://github.com/MrSquaare/mrsquaare.fr/commit/2e0775835d20a63683069727761c3575cef07632))
+
 ## [1.0.1](https://github.com/MrSquaare/mrsquaare.fr/compare/web-app@1.0.0...web-app@1.0.1) (2023-10-25)
 
 
