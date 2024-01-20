@@ -20,9 +20,11 @@ jobs:
         with:
           node-version: 20
       - name: Install dependencies
+        # Enforce semantic-release version to avoid search strategy breaking changes
+        # See https://github.com/cosmiconfig/cosmiconfig/releases/tag/v9.0.0
         run: |
           npm install -g \
-          semantic-release \
+          semantic-release@22.0.12 \
           @semantic-release/commit-analyzer \
           @semantic-release/release-notes-generator \
           @semantic-release/changelog \
