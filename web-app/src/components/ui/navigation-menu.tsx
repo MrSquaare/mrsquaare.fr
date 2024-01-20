@@ -60,7 +60,7 @@ const NavigationMenuTrigger = React.forwardRef<
     <Icon
       aria-hidden={"true"}
       className={
-        "relative top-[1px] ml-1 h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180"
+        "size-3 relative top-[1px] ml-1 transition duration-200 group-data-[state=open]:rotate-180"
       }
       icon={"ph:caret-down"}
     />
@@ -117,7 +117,7 @@ const NavigationMenuIndicator = React.forwardRef<
   >
     <div
       className={
-        "relative top-[60%] h-2 w-2 rotate-45 rounded-tl-sm bg-border shadow-md"
+        "size-2 relative top-[60%] rotate-45 rounded-tl-sm bg-border shadow-md"
       }
     />
   </NavigationMenuPrimitive.Indicator>
