@@ -5,18 +5,16 @@ module.exports = {
     "plugin:prettier/recommended",
     "plugin:import/recommended",
     "plugin:import/typescript",
-    "plugin:jest/recommended",
   ],
   env: {
-    node: true,
+    es2022: true,
   },
   parser: "@typescript-eslint/parser",
   parserOptions: {
-    ecmaVersion: 12,
+    ecmaVersion: "latest",
     sourceType: "module",
   },
   rules: {
-    "prettier/prettier": ["warn"],
     "import/order": [
       "warn",
       {
@@ -25,4 +23,24 @@ module.exports = {
       },
     ],
   },
+  overrides: [
+    {
+      files: ["{.*rc,*.config}.{js,cjs,ts}"],
+      env: {
+        node: true,
+      },
+      rules: {
+        "@typescript-eslint/no-var-requires": "off",
+        "import/no-commonjs": "off",
+        "import/no-nodejs-modules": "off",
+      },
+    },
+    {
+      files: ["*.{spec,test}.{js,cjs,ts}"],
+      extends: ["plugin:jest/recommended"],
+      env: {
+        jest: true,
+      },
+    },
+  ],
 };

@@ -7,6 +7,7 @@ module.exports = {
     "plugin:@next/next/core-web-vitals",
     "plugin:tailwindcss/recommended",
   ],
+  root: true,
   env: {
     browser: true,
   },
