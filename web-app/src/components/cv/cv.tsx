@@ -38,7 +38,7 @@ export const CV: FC = () => {
           "mb-4 flex flex-col items-center justify-center gap-4 sm:flex-row"
         }
       >
-        <Avatar className={"h-40 w-40"}>
+        <Avatar className={"size-40"}>
           <AvatarImage alt={"MrSquaare"} src={"/cv-picture.jpg"} />
           <AvatarFallback>GB</AvatarFallback>
         </Avatar>

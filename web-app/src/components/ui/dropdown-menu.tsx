@@ -35,7 +35,7 @@ const DropdownMenuSubTrigger = React.forwardRef<
     {...props}
   >
     {children}
-    <Icon className={"ml-auto h-4 w-4"} icon={"ph:caret-right"} />
+    <Icon className={"size-4 ml-auto"} icon={"ph:caret-right"} />
   </DropdownMenuPrimitive.SubTrigger>
 ));
 DropdownMenuSubTrigger.displayName =
@@ -107,10 +107,10 @@ const DropdownMenuCheckboxItem = React.forwardRef<
     {...props}
   >
     <span
-      className={"absolute left-2 flex h-3.5 w-3.5 items-center justify-center"}
+      className={"size-3.5 absolute left-2 flex items-center justify-center"}
     >
       <DropdownMenuPrimitive.ItemIndicator>
-        <Icon className={"h-4 w-4"} icon={"ph:check"} />
+        <Icon className={"size-4"} icon={"ph:check"} />
       </DropdownMenuPrimitive.ItemIndicator>
     </span>
     {children}
@@ -132,10 +132,10 @@ const DropdownMenuRadioItem = React.forwardRef<
     {...props}
   >
     <span
-      className={"absolute left-2 flex h-3.5 w-3.5 items-center justify-center"}
+      className={"size-3.5 absolute left-2 flex items-center justify-center"}
     >
       <DropdownMenuPrimitive.ItemIndicator>
-        <Icon className={"h-2 w-2 fill-current"} icon={"ph:circle"} />
+        <Icon className={"size-2 fill-current"} icon={"ph:circle"} />
       </DropdownMenuPrimitive.ItemIndicator>
     </span>
     {children}
