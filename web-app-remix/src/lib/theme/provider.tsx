@@ -10,7 +10,7 @@ export const RemixThemeContext = createContext<
 >(undefined);
 
 export type RemixThemeProviderProps = PropsWithChildren & {
-  initialTheme: string;
+  initialTheme?: string;
 };
 
 export const RemixThemeProvider: FC<RemixThemeProviderProps> = ({

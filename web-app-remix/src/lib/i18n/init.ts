@@ -5,7 +5,9 @@ import { initReactI18next } from "react-i18next";
 
 import { RemixI18nConfig } from "./types";
 
-export const getLanguageFromRouteData = (routeData?: RouteData): string => {
+export const getLanguageFromRouteData = (
+  routeData?: RouteData,
+): string | undefined => {
   return routeData?.root?.lang;
 };
 

@@ -5,12 +5,10 @@ import { RemixThemeLoaderData } from "./types";
 import { useThemeContext } from "./useThemeContext";
 
 export const useChangeTheme = () => {
-  const context = useThemeContext();
+  const { setTheme } = useThemeContext();
   const data = useLoaderData<RemixThemeLoaderData>();
 
   useEffect(() => {
-    if (data.theme === context.theme) return;
-
-    context.setTheme(data.theme);
-  }, [context, data.theme]);
+    setTheme(data.theme);
+  }, [data.theme, setTheme]);
 };
