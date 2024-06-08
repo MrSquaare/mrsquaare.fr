@@ -7,7 +7,10 @@ export const useTheme = () => {
   const context = useThemeContext();
   const fetcher = useFetcher();
 
+  const config = context.config;
   const theme = context.theme;
+  const preferredTheme = context.preferredTheme;
+  const resolvedTheme = context.resolvedTheme;
   const setTheme = useCallback(
     (theme: string) => {
       fetcher.submit(
@@ -19,5 +22,5 @@ export const useTheme = () => {
     [context, fetcher],
   );
 
-  return { theme, setTheme };
+  return { config, theme, preferredTheme, resolvedTheme, setTheme };
 };

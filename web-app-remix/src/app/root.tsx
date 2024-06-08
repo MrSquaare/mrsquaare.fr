@@ -1,4 +1,4 @@
-import { LinksFunction, LoaderFunctionArgs } from "@remix-run/node";
+import { LinksFunction, LoaderFunction } from "@remix-run/node";
 import {
   Links,
   Meta,
@@ -9,13 +9,12 @@ import {
 } from "@remix-run/react";
 
 import { remixI18nConfig } from "../constants/i18n";
-import { remixThemeConfig } from "../constants/theme";
-import { useI18n } from "../lib/i18n/client";
 import { remixI18nLoader } from "../lib/i18n/loader";
 import { useChangeI18n } from "../lib/i18n/useChangeI18n";
+import { useI18n } from "../lib/i18n/useI18n";
 import { remixThemeCookie } from "../lib/theme/cookie";
 import { remixThemeLoader } from "../lib/theme/loader";
-import { remixThemeScript } from "../lib/theme/script";
+import { RemixThemeScript } from "../lib/theme/script";
 import { useChangeTheme } from "../lib/theme/useChangeTheme";
 import { useTheme } from "../lib/theme/useTheme";
 
@@ -23,7 +22,7 @@ import styles from "./index.css?url";
 
 export const links: LinksFunction = () => [{ rel: "stylesheet", href: styles }];
 
-export const loader = async (args: LoaderFunctionArgs) => {
+export const loader: LoaderFunction = async (args) => {
   const i18nData = await remixI18nLoader(remixI18nConfig, args);
   const themeData = await remixThemeLoader(remixThemeCookie, args);
 
@@ -35,24 +34,20 @@ export const loader = async (args: LoaderFunctionArgs) => {
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const { language, dir } = useI18n();
-  const { theme } = useTheme();
+  const { resolvedTheme } = useTheme();
 
   useChangeTheme();
   useChangeI18n();
 
   return (
-    <html className={theme} dir={dir} lang={language} suppressHydrationWarning>
+    <html className={resolvedTheme} dir={dir} lang={language}>
       <head>
         <meta charSet={"utf-8"} />
         <meta
           content={"width=device-width, initial-scale=1"}
           name={"viewport"}
         />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: remixThemeScript(remixThemeConfig),
-          }}
-        />
+        <RemixThemeScript />
         <Meta />
         <Links />
       </head>

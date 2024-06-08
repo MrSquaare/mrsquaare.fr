@@ -13,6 +13,7 @@ import { isbot } from "isbot";
 import { renderToPipeableStream } from "react-dom/server";
 
 import { remixI18nConfig } from "../constants/i18n";
+import { remixThemeConfig } from "../constants/theme";
 import { getLanguageFromRouteData, remixI18nInit } from "../lib/i18n/init";
 import { RemixI18nProvider } from "../lib/i18n/provider";
 import { getThemeFromRouteData } from "../lib/theme/init";
@@ -34,19 +35,21 @@ export default async function handleRequest(
     ? "onAllReady"
     : "onShellReady";
 
+  const serverRouteData = remixContext.staticHandlerContext.loaderData;
   const instance = await remixI18nInit(
     remixI18nConfig,
-    getLanguageFromRouteData(remixContext.staticHandlerContext.loaderData),
+    getLanguageFromRouteData(serverRouteData),
   );
-  const initialTheme = getThemeFromRouteData(
-    remixContext.staticHandlerContext.loaderData,
-  );
+  const initialTheme = getThemeFromRouteData(serverRouteData);
 
   return new Promise((resolve, reject) => {
     let shellRendered = false;
     const { pipe, abort } = renderToPipeableStream(
       <RemixI18nProvider instance={instance}>
-        <RemixThemeProvider initialTheme={initialTheme}>
+        <RemixThemeProvider
+          config={remixThemeConfig}
+          initialTheme={initialTheme}
+        >
           <RemixServer
             abortDelay={ABORT_DELAY}
             context={remixContext}
