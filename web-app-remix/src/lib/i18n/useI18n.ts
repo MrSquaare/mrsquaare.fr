@@ -1,23 +1,38 @@
-import { useLocation, useNavigate } from "@remix-run/react";
+import { useLocation, useNavigate, useParams } from "@remix-run/react";
 import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 
 export const useI18n = () => {
   const { i18n } = useTranslation();
   const location = useLocation();
+  const params = useParams();
   const navigate = useNavigate();
 
   const language = i18n.language;
   const dir = i18n.dir(language);
   const setLanguage = useCallback(
     async (lang: string) => {
-      const newUrl = location.pathname.replace(/^\/[a-z]{2}/, `/${lang}`);
+      if (params.lang === lang) return;
 
-      await i18n.changeLanguage(lang);
+      const newPath =
+        location.pathname.replace(`/${params.lang ?? ""}`, `/${lang}`) +
+        location.search +
+        location.hash;
 
-      navigate(newUrl);
+      navigate(newPath, {
+        state: location.state,
+      });
+      i18n.changeLanguage(lang);
     },
-    [i18n, location, navigate],
+    [
+      i18n,
+      location.hash,
+      location.pathname,
+      location.search,
+      location.state,
+      navigate,
+      params.lang,
+    ],
   );
 
   return { language, dir, setLanguage };

@@ -5,17 +5,14 @@ import { initReactI18next } from "react-i18next";
 
 import { RemixI18nConfig } from "./types";
 
-const getLanguageFromRouteData = (routeData?: RouteData) => {
+export const getLanguageFromRouteData = (routeData?: RouteData): string => {
   return routeData?.root?.lang;
 };
 
-export const remixI18nInit = async (
-  config: RemixI18nConfig,
-  routeData?: RouteData,
-) => {
+export const remixI18nInit = async (config: RemixI18nConfig, lang?: string) => {
   // eslint-disable-next-line import/no-named-as-default-member
   const instance = i18next.createInstance();
-  const lng = getLanguageFromRouteData(routeData) || config.defaultLanguage;
+  const language = lang || config.defaultLanguage;
 
   await instance
     .use(initReactI18next)
@@ -27,7 +24,7 @@ export const remixI18nInit = async (
     .init({
       supportedLngs: config.languages,
       fallbackLng: config.defaultLanguage,
-      lng: lng,
+      lng: language,
       defaultNS: config.defaultNamespace,
       ns: config.namespaces,
       preload: config.languages,

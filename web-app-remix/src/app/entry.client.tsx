@@ -9,26 +9,30 @@ import { startTransition, StrictMode } from "react";
 import { hydrateRoot } from "react-dom/client";
 
 import { remixI18nConfig } from "../constants/i18n";
-import { remixI18nInit } from "../lib/i18n/init";
+import { getLanguageFromRouteData, remixI18nInit } from "../lib/i18n/init";
 import { RemixI18nProvider } from "../lib/i18n/provider";
-import { RemixThemeProvider } from "../lib/theme/client";
+import { getThemeFromRouteData } from "../lib/theme/init";
+import { RemixThemeProvider } from "../lib/theme/provider";
 
 async function hydrate() {
   const instance = await remixI18nInit(
     remixI18nConfig,
+    getLanguageFromRouteData(window.__remixContext.state.loaderData),
+  );
+  const initialTheme = getThemeFromRouteData(
     window.__remixContext.state.loaderData,
   );
 
   startTransition(() => {
     hydrateRoot(
       document,
-      <RemixThemeProvider>
-        <RemixI18nProvider instance={instance}>
+      <RemixI18nProvider instance={instance}>
+        <RemixThemeProvider initialTheme={initialTheme}>
           <StrictMode>
             <RemixBrowser />
           </StrictMode>
-        </RemixI18nProvider>
-      </RemixThemeProvider>,
+        </RemixThemeProvider>
+      </RemixI18nProvider>,
     );
   });
 }

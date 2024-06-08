@@ -1,20 +1,19 @@
 import { useFetcher } from "@remix-run/react";
-import { useCallback, useContext } from "react";
+import { useCallback } from "react";
 
-import { RemixThemeContext } from "./provider";
+import { useThemeContext } from "./useThemeContext";
 
 export const useTheme = () => {
-  const context = useContext(RemixThemeContext);
+  const context = useThemeContext();
   const fetcher = useFetcher();
-
-  if (!context) {
-    throw new Error("useTheme must be used within a ThemeProvider");
-  }
 
   const theme = context.theme;
   const setTheme = useCallback(
     (theme: string) => {
-      fetcher.submit({ theme }, { action: "action/set-theme", method: "post" });
+      fetcher.submit(
+        { theme },
+        { action: "/action/set-theme", method: "post" },
+      );
       context.setTheme(theme);
     },
     [context, fetcher],

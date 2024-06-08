@@ -9,12 +9,15 @@ export const RemixThemeContext = createContext<
   RemixThemeContextType | undefined
 >(undefined);
 
-export type RemixThemeProviderProps = PropsWithChildren;
+export type RemixThemeProviderProps = PropsWithChildren & {
+  initialTheme: string;
+};
 
 export const RemixThemeProvider: FC<RemixThemeProviderProps> = ({
+  initialTheme,
   children,
 }) => {
-  const [theme, setTheme] = useState<string | undefined>();
+  const [theme, setTheme] = useState(initialTheme);
 
   return (
     <RemixThemeContext.Provider value={{ theme, setTheme }}>

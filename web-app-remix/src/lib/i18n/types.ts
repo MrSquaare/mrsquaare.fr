@@ -7,3 +7,7 @@ export type RemixI18nConfig<
   namespaces: Namespaces;
   defaultNamespace: Namespaces[number];
 };
+
+export type RemixI18nLoaderData = {
+  lang: string;
+};
