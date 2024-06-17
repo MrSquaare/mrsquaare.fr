@@ -18,7 +18,7 @@ module.exports = {
     commonjs: true,
     es6: true,
   },
-  ignorePatterns: ["!**/.server", "!**/.client"],
+  ignorePatterns: ["!**/.server", "!**/.client", "node_modules/"],
   settings: {
     react: {
       version: "detect",

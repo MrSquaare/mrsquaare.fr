@@ -20,7 +20,10 @@ import { useTheme } from "../lib/theme/useTheme";
 
 import styles from "./index.css?url";
 
-export const links: LinksFunction = () => [{ rel: "stylesheet", href: styles }];
+export const links: LinksFunction = () => [
+  { rel: "icon", href: "/favicon.svg" },
+  { rel: "stylesheet", href: styles },
+];
 
 export const loader: LoaderFunction = async (args) => {
   const i18nData = await remixI18nLoader(remixI18nConfig, args);
