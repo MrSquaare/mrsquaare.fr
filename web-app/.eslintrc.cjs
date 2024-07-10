@@ -8,17 +8,16 @@ module.exports = {
     "plugin:react-hooks/recommended",
     "plugin:jsx-a11y/recommended",
   ],
-  parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
-    },
-  },
   env: {
     browser: true,
     commonjs: true,
     es6: true,
   },
-  ignorePatterns: ["!**/.server", "!**/.client", "node_modules/"],
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
+  },
   settings: {
     react: {
       version: "detect",
@@ -36,4 +35,5 @@ module.exports = {
     "react/jsx-curly-brace-presence": ["warn", { props: "always" }],
     "react/jsx-sort-props": ["warn"],
   },
+  ignorePatterns: ["node_modules", "build"],
 };
