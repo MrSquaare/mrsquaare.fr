@@ -20,7 +20,7 @@
     "lint": {
       "cache": false
     },
-    "format": {
+    "lint:fix": {
       "cache": false
     },
     "test": {
