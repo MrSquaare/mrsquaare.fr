@@ -13,11 +13,14 @@ import {
   Navigation,
   NavigationItem,
   NavigationList,
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
 } from "@mrsquaare/sandwich-ui";
 import { MetaFunction } from "@remix-run/node";
 import { Link } from "@remix-run/react";
 import { format, parse } from "date-fns";
-import { FC, useCallback } from "react";
+import { FC } from "react";
 import { useTranslation } from "react-i18next";
 
 import { LanguageSwitcher } from "../../components/common/language-switcher";
@@ -49,10 +52,6 @@ const CVPage: FC = () => {
 
   const language = lng as LanguageType;
 
-  const downloadAsPDF = useCallback(() => {
-    print();
-  }, []);
-
   return (
     <>
       <div
@@ -63,9 +62,6 @@ const CVPage: FC = () => {
           bg: "neutral.100",
           _dark: {
             bg: "neutral.800",
-          },
-          _print: {
-            display: "none",
           },
         })}
       >
@@ -86,11 +82,6 @@ const CVPage: FC = () => {
             </NavigationItem>
           </NavigationList>
           <NavigationList>
-            <NavigationItem>
-              <Button onClick={downloadAsPDF}>
-                {t("nav.download_as_pdf")}
-              </Button>
-            </NavigationItem>
             <NavigationItem>
               <LanguageSwitcher />
             </NavigationItem>
@@ -438,9 +429,6 @@ const CVPage: FC = () => {
                       lg: {
                         gridTemplateColumns: "repeat(5, 1fr)",
                       },
-                      _print: {
-                        gridTemplateColumns: "repeat(5, 1fr)",
-                      },
                     })}
                   >
                     {skills.map((skill, index) => (
@@ -454,14 +442,22 @@ const CVPage: FC = () => {
                           })}
                         >
                           <CardHeader>
-                            <CardTitle
-                              className={css({
-                                fontSize: "md",
-                                textAlign: "center",
-                              })}
-                            >
-                              {technologiesInfo[skill.technology].name}
-                            </CardTitle>
+                            <Tooltip>
+                              <TooltipTrigger asChild>
+                                <CardTitle
+                                  className={css({
+                                    fontSize: "md",
+                                    textAlign: "center",
+                                    lineClamp: 1,
+                                  })}
+                                >
+                                  {technologiesInfo[skill.technology].name}
+                                </CardTitle>
+                              </TooltipTrigger>
+                              <TooltipContent>
+                                {technologiesInfo[skill.technology].name}
+                              </TooltipContent>
+                            </Tooltip>
                           </CardHeader>
                           <CardBody
                             className={css({
