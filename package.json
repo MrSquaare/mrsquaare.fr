@@ -28,9 +28,13 @@
     "fclean:web": "turbo run fclean --filter=web-app",
     "fclean": "turbo run fclean && rimraf node_modules/ **/*/.turbo/",
     "check-updates": "npm-check-updates -ws --root",
-    "do-upgrades": "npm-check-updates -ws --root --upgrade"
+    "do-upgrades": "npm-check-updates -ws --root --upgrade",
+    "version": "changeset version && pnpm install",
+    "publish": "changeset publish"
   },
   "devDependencies": {
+    "@changesets/changelog-github": "^0.5.0",
+    "@changesets/cli": "^2.27.7",
     "@types/jest": "^29.5.12",
     "@typescript-eslint/eslint-plugin": "^7.16.0",
     "@typescript-eslint/parser": "^7.16.0",
