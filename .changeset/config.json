@@ -2,7 +2,7 @@
   "$schema": "https://unpkg.com/@changesets/config@3.0.2/schema.json",
   "changelog": [
     "@changesets/changelog-github",
-    { "repo": "MrSquaare/sandwich-ui" }
+    { "repo": "MrSquaare/mrsquaare.fr" }
   ],
   "commit": false,
   "fixed": [],
