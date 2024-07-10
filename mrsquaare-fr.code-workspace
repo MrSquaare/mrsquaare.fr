@@ -7,11 +7,7 @@
     {
       "name": "web-app",
       "path": "./web-app"
-    },
-    {
-      "name": "web-app-remix",
-      "path": "./web-app-remix"
-    },
+    }
   ],
   "settings": {
     "jest.disabledWorkspaceFolders": [

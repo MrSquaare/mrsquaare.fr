@@ -54,7 +54,7 @@ importers:
         specifier: ^5.5.3
         version: 5.5.3
 
-  web-app-remix:
+  web-app:
     dependencies:
       '@iconify-icon/react':
         specifier: ^2.1.0
