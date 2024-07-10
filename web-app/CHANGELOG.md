@@ -1,3 +1,9 @@
+## [1.0.4](https://github.com/MrSquaare/mrsquaare.fr/compare/web-app@1.0.3...web-app@1.0.4) (2024-07-10)
+
+### Build
+
+* bump packages ([216ff4f](https://github.com/MrSquaare/mrsquaare.fr/commit/216ff4f42563e7d2331b781ea3d9ae24dc433406))
+
 ## [1.0.3](https://github.com/MrSquaare/mrsquaare.fr/compare/web-app@1.0.2...web-app@1.0.3) (2024-01-20)
 
 
