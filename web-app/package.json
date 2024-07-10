@@ -4,8 +4,8 @@
   "version": "1.0.4",
   "type": "module",
   "scripts": {
-    "prepare": "panda codegen",
     "dev": "remix vite:dev",
+    "prebuild": "panda codegen",
     "build": "remix vite:build",
     "start": "remix-serve ./build/server/index.js",
     "typecheck": "tsc",
