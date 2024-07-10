@@ -4,6 +4,7 @@ import { Technology } from "./technology";
 export enum ExperienceType {
   INTERNSHIP,
   APPRENTICESHIP,
+  CONTRACT,
 }
 
 export type Experience = {
@@ -12,7 +13,7 @@ export type Experience = {
   company: LanguageString;
   location: LanguageString;
   startDate: string;
-  endDate: string;
+  endDate: string | null;
   missions: LanguageString[];
   technologies: Technology[];
 };

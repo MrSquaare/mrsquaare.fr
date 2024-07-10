@@ -1,3 +1,4 @@
+/** @type {import('eslint').Linter.Config} */
 module.exports = {
   extends: [
     "eslint:recommended",
@@ -15,6 +16,7 @@ module.exports = {
     sourceType: "module",
   },
   rules: {
+    "import/no-unresolved": "off",
     "import/order": [
       "warn",
       {
@@ -25,7 +27,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ["{.*rc,*.config}.{js,cjs,ts}"],
+      files: ["{.*rc,*.config}.{js,cjs,mjs,ts}"],
       env: {
         node: true,
       },
@@ -33,13 +35,6 @@ module.exports = {
         "@typescript-eslint/no-var-requires": "off",
         "import/no-commonjs": "off",
         "import/no-nodejs-modules": "off",
-      },
-    },
-    {
-      files: ["*.{spec,test}.{js,cjs,ts}"],
-      extends: ["plugin:jest/recommended"],
-      env: {
-        jest: true,
       },
     },
   ],

@@ -53,5 +53,5 @@ pnpm lint
 Format the code:
 
 ```shell script
-pnpm format
+pnpm lint:fix
 ```

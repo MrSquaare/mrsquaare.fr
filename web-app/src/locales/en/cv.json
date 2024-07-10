@@ -3,10 +3,9 @@
     "title": "Curriculum Vitae"
   },
   "nav": {
-    "home": "Home",
-    "download_as_pdf": "Download as PDF"
+    "home": "Home"
   },
-  "job_title": "Full-stack web and mobile developer",
+  "job_title": "Web and mobile developer",
   "about_me": {
     "title": "About me",
     "content": "Passionate about development, I have specifically focused on the web and mobile worlds and have built up my expertise there. I'm fully committed to the projects I work on. I'm constantly looking for ways to improve, and my curiosity drives me to explore new technologies."
@@ -23,10 +22,12 @@
     "title": "Experiences",
     "type": {
       "0": "Internship",
-      "1": "Apprenticeship"
+      "1": "Apprenticeship",
+      "2": "Permanent contract"
     },
     "date": {
-      "from-to": "From {{fromDate}} to {{toDate}}"
+      "from-to": "From {{fromDate}} to {{toDate}}",
+      "since": "Since {{date}}"
     }
   },
   "educations": {

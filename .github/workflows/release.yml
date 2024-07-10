@@ -9,37 +9,27 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          persist-credentials: false
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-      - name: Install dependencies
-        # Enforce semantic-release version to avoid search strategy breaking changes
-        # See https://github.com/cosmiconfig/cosmiconfig/releases/tag/v9.0.0
-        run: |
-          npm install -g \
-          semantic-release@22.0.12 \
-          @semantic-release/commit-analyzer \
-          @semantic-release/release-notes-generator \
-          @semantic-release/changelog \
-          @semantic-release/npm \
-          @semantic-release/git \
-          @semantic-release/github \
-          conventional-changelog-conventionalcommits
+          cache: pnpm
 
-          echo "$(npm bin -g)" >> $GITHUB_PATH
-      - name: Get global node_modules path
-        id: get-global-node-modules-path
-        run: |
-          echo "::set-output name=NODE_PATH::$(npm root -g)"
-      - name: Release
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Create Release Pull Request or Publish to npm
+        uses: changesets/action@v1
+        with:
+          version: pnpm run version
+          publish: pnpm run publish
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-          NODE_PATH: ${{ steps.get-global-node-modules-path.outputs.NODE_PATH }}
-        run: npm exec --ws -- semantic-release
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

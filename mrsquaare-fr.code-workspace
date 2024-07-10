@@ -7,7 +7,7 @@
     {
       "name": "web-app",
       "path": "./web-app"
-    },
+    }
   ],
   "settings": {
     "jest.disabledWorkspaceFolders": [

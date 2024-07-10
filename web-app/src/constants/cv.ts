@@ -1,10 +1,22 @@
 import { Education } from "../types/education";
 import { Experience, ExperienceType } from "../types/experience";
-import { Project } from "../types/project";
 import { Skill } from "../types/skill";
 import { Technology } from "../types/technology";
 
 export const experiences: Experience[] = [
+  {
+    title: {
+      en: "Web developer",
+      fr: "Développeur web",
+    },
+    type: ExperienceType.CONTRACT,
+    company: "Sogeti",
+    location: "Toulouse, France",
+    startDate: "2023-11",
+    endDate: null,
+    missions: [],
+    technologies: [],
+  },
   {
     title: {
       en: "Web and mobile developer",
@@ -21,7 +33,7 @@ export const experiences: Experience[] = [
         fr: "Développement des applications web et mobile",
       },
       {
-        en: "Modernisation of the technical stack",
+        en: "Modernization of the technical stack",
         fr: "Modernisation de la stack technique",
       },
       {
@@ -117,164 +129,102 @@ export const educations: Education[] = [
 export const skills: Skill[] = [
   {
     technology: Technology.HTML,
-    years: 5,
+    level: 4,
   },
   {
     technology: Technology.CSS,
-    years: 5,
+    level: 4,
   },
   {
     technology: Technology.JAVASCRIPT,
-    years: 5,
+    level: 4,
   },
   {
     technology: Technology.TYPESCRIPT,
-    years: 3,
+    level: 4,
   },
   {
     technology: Technology.REACT,
-    years: 3,
+    level: 4,
   },
   {
     technology: Technology.NEXT_JS,
-    years: 2,
+    level: 4,
+  },
+  {
+    technology: Technology.REMIX,
+    level: 3,
+  },
+  {
+    technology: Technology.ASTRO,
+    level: 2,
   },
   {
     technology: Technology.SASS,
-    years: 3,
+    level: 3,
   },
   {
     technology: Technology.TAILWIND_CSS,
-    years: 1,
+    level: 4,
+  },
+  {
+    technology: Technology.PANDA_CSS,
+    level: 3,
   },
   {
     technology: Technology.REACT_NATIVE,
-    years: 3,
+    level: 3,
   },
   {
     technology: Technology.CAPACITOR,
-    years: 2,
+    level: 3,
   },
   {
     technology: Technology.NODE_JS,
-    years: 3,
+    level: 3,
   },
   {
     technology: Technology.EXPRESS_JS,
-    years: 3,
+    level: 4,
   },
   {
     technology: Technology.FASTIFY,
-    years: 2,
+    level: 3,
   },
   {
     technology: Technology.NEST_JS,
-    years: 2,
+    level: 3,
   },
   {
     technology: Technology.REST,
-    years: 3,
+    level: 4,
   },
   {
     technology: Technology.GRAPHQL,
-    years: 2,
+    level: 3,
   },
   {
     technology: Technology.DART,
-    years: 1,
+    level: 2,
   },
   {
     technology: Technology.FLUTTER,
-    years: 1,
+    level: 2,
   },
   {
     technology: Technology.GIT,
-    years: 5,
+    level: 4,
   },
   {
     technology: Technology.DOCKER,
-    years: 3,
+    level: 4,
   },
   {
     technology: Technology.DEVOPS,
-    years: 3,
-  },
-];
-
-export const projects: Project[] = [
-  {
-    title: {
-      en: "mrsquaare.fr (This page)",
-      fr: "mrsquaare.fr (Cette page)",
-    },
-    description: {
-      en: "My personal website.",
-      fr: "Mon site web personnel.",
-    },
-    technologies: [
-      Technology.JAVASCRIPT,
-      Technology.TYPESCRIPT,
-      Technology.REACT,
-      Technology.NEXT_JS,
-      Technology.TAILWIND_CSS,
-      Technology.DOCKER,
-    ],
-    links: [
-      {
-        title: {
-          en: "Website",
-          fr: "Site web",
-        },
-        url: "https://mrsquaare.fr/cv",
-        icon: "ph:link",
-      },
-      {
-        title: "GitHub",
-        url: "https://github.com/MrSquaare/mrsquaare.fr",
-        icon: "ph:github-logo",
-      },
-    ],
+    level: 3,
   },
   {
-    title: "Fiesta",
-    description: {
-      en: "Twitter clone for educational purposes.",
-      fr: "Clone de Twitter à but éducatif.",
-    },
-    inDevelopment: true,
-    technologies: [
-      Technology.JAVASCRIPT,
-      Technology.TYPESCRIPT,
-      Technology.REACT,
-      Technology.CAPACITOR,
-      Technology.TAILWIND_CSS,
-      Technology.NODE_JS,
-      Technology.NEST_JS,
-      Technology.GRAPHQL,
-      Technology.DOCKER,
-    ],
-    links: [
-      {
-        title: "GitHub",
-        url: "https://github.com/MrSquaare/fiesta",
-        icon: "ph:github-logo",
-      },
-    ],
-  },
-  {
-    title: "TaskTonic",
-    description: {
-      en: "Daily reminder task organizer.",
-      fr: "Organisateur de tâche à rappel quotidien.",
-    },
-    inDevelopment: true,
-    technologies: [Technology.DART, Technology.FLUTTER],
-    links: [
-      {
-        title: "GitHub",
-        url: "https://github.com/MrSquaare/fiesta",
-        icon: "ph:github-logo",
-      },
-    ],
+    technology: Technology.AWS,
+    level: 1,
   },
 ];
