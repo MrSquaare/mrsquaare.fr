@@ -5,18 +5,8 @@
       "path": "."
     },
     {
-      "name": "web-app",
-      "path": "./web-app"
+      "name": "apps",
+      "path": "./apps"
     }
-  ],
-  "settings": {
-    "jest.disabledWorkspaceFolders": [
-      "root",
-      "web-app",
-    ],
-    "i18n-ally.localesPaths": [
-      "web-app/src/i18n",
-      "web-app/src/i18n/langs"
-    ]
-  }
+  ]
 }

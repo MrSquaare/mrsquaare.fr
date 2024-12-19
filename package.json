@@ -2,26 +2,16 @@
   "private": true,
   "name": "mrsquaare.fr",
   "workspaces": [
-    "web-app"
+    "apps/*"
   ],
   "scripts": {
     "preinstall": "npx -y only-allow pnpm",
-    "dev:web": "turbo run dev --filter=web-app",
     "dev": "turbo run dev --parallel",
-    "build:web": "turbo run build --filter=web-app",
     "build": "turbo run build",
-    "start:web": "turbo run start --filter=web-app",
     "start": "turbo run start",
-    "lint:web": "turbo run lint --filter=web-app",
     "lint": "turbo run lint",
-    "lint:fix:web": "turbo run lint:fix --filter=web-app",
     "lint:fix": "turbo run lint:fix",
-    "test:web": "turbo run test --filter=web-app",
-    "test": "turbo run test",
-    "clean:web": "turbo run clean --filter=web-app",
     "clean": "turbo run clean && rimraf node_modules/.cache/ **/*/.turbo/",
-    "fclean:web": "turbo run fclean --filter=web-app",
-    "fclean": "turbo run fclean && rimraf node_modules/ **/*/.turbo/",
     "check-updates": "npm-check-updates -ws --root",
     "do-upgrades": "npm-check-updates -ws --root --upgrade",
     "version": "changeset version && pnpm install",
@@ -29,11 +19,11 @@
   },
   "devDependencies": {
     "@changesets/changelog-github": "^0.5.0",
-    "@changesets/cli": "^2.27.7",
-    "npm-check-updates": "^16.14.20",
+    "@changesets/cli": "^2.27.11",
+    "npm-check-updates": "^17.1.11",
     "only-allow": "^1.2.1",
-    "rimraf": "^6.0.0",
-    "turbo": "^2.0.6"
+    "rimraf": "^6.0.1",
+    "turbo": "^2.3.3"
   },
-  "packageManager": "pnpm@9.5.0"
+  "packageManager": "pnpm@9.15.0"
 }

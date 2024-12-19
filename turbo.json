@@ -9,9 +9,7 @@
         "^build"
       ],
       "outputs": [
-        ".next/**",
-        "dist/**",
-        "out/**"
+        "build/**"
       ]
     },
     "start": {
@@ -23,14 +21,7 @@
     "lint:fix": {
       "cache": false
     },
-    "test": {
-      "cache": false
-    },
     "clean": {
-      "cache": false,
-      "outputs": []
-    },
-    "fclean": {
       "cache": false,
       "outputs": []
     },

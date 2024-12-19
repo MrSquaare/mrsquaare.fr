@@ -4,21 +4,8 @@
 # Node
 **/node_modules/
 
-# Next.js
-next-env.d.ts
-
 # Turborepo
 **/.turbo/
-
-# Builds
-**/.next/
-**/.swc/
-**/dist/
-**/out/
-**/*.tsbuildinfo
-
-# Tests
-**/coverage/
 
 # Editors and IDEs
 .idea/
@@ -28,3 +15,6 @@ next-env.d.ts
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/*.code-snippets
+
+# macOS
+.DS_Store
