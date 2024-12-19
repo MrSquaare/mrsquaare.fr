@@ -1,0 +1,76 @@
+name: "@mrsquaare-fr/web Pull Request"
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/web-pull-request.yml"
+      - "apps/web/**"
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    name: Setup
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup environment
+        uses: ./.github/actions/setup-env
+
+  build:
+    needs: setup
+    runs-on: ubuntu-latest
+    name: Build
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup environment
+        uses: ./.github/actions/setup-env
+
+      - name: Build
+        run: pnpm build --filter @mrsquaare-fr/web
+
+  lint:
+    needs: setup
+    runs-on: ubuntu-latest
+    name: Analyze
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup environment
+        uses: ./.github/actions/setup-env
+
+      - name: Lint
+        run: pnpm lint --filter @mrsquaare-fr/web
+
+  docker:
+    runs-on: ubuntu-latest
+    name: Build Docker Image
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: false
+          file: ./apps/web/Dockerfile
+          tags: image:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
