@@ -33,7 +33,6 @@ import {
   LINKEDIN_LINK,
   MAIL,
   MAIL_LINK,
-  X_LINK,
 } from "../../constants/link";
 import { technologiesInfo } from "../../constants/technology";
 import { useI18n } from "../../lib/i18n/useI18n";
@@ -235,23 +234,6 @@ const CVPage: FC = () => {
                         to={LINKEDIN_LINK}
                       >
                         g-bonnet
-                      </Link>
-                    </li>
-                    <li
-                      className={css({
-                        display: "flex",
-                        alignItems: "center",
-                        gap: 1,
-                      })}
-                    >
-                      <Icon icon={"simple-icons:x"} />
-                      <Link
-                        referrerPolicy={"no-referrer"}
-                        rel={"noreferrer"}
-                        target={"_blank"}
-                        to={X_LINK}
-                      >
-                        @MrSquaare
                       </Link>
                     </li>
                     <li

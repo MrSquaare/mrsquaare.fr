@@ -18,7 +18,7 @@ import { useTranslation } from "react-i18next";
 import { LogoIcon } from "../../components/common/icon";
 import { LanguageSwitcher } from "../../components/common/language-switcher";
 import { ThemeSwitcher } from "../../components/common/theme-switcher";
-import { GITHUB_LINK, MAIL_LINK, X_LINK } from "../../constants/link";
+import { BLUESKY_LINK, GITHUB_LINK, MAIL_LINK } from "../../constants/link";
 import { useI18n } from "../../lib/i18n/useI18n";
 
 export const meta: MetaFunction = () => {
@@ -125,22 +125,7 @@ const HomePage: FC = () => {
                   referrerPolicy={"no-referrer"}
                   rel={"noreferrer"}
                   target={"_blank"}
-                  to={X_LINK}
-                >
-                  <Icon icon={"simple-icons:x"} />
-                </Link>
-              </Button>
-            </TooltipTrigger>
-            <TooltipContent>X (Twitter)</TooltipContent>
-          </Tooltip>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Button asChild size={"lg"} variant={"outlined"}>
-                <Link
-                  referrerPolicy={"no-referrer"}
-                  rel={"noreferrer"}
-                  target={"_blank"}
-                  to={X_LINK}
+                  to={BLUESKY_LINK}
                 >
                   <Icon icon={"simple-icons:bluesky"} />
                 </Link>
