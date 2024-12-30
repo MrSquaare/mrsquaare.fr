@@ -1,5 +1,11 @@
 # @mrsquaare-fr/web
 
+## 2.2.0
+
+### Minor Changes
+
+- [#30](https://github.com/MrSquaare/mrsquaare.fr/pull/30) [`12c9d5d`](https://github.com/MrSquaare/mrsquaare.fr/commit/12c9d5d1ba1544deff8c133ce8394089a767a845) Thanks [@MrSquaare](https://github.com/MrSquaare)! - Bump deps, remove X (Twitter) link
+
 ## 2.1.0
 
 ### Minor Changes
