@@ -20,6 +20,7 @@ export default [
           "newlines-between": "always",
         },
       ],
+      "@typescript-eslint/consistent-type-imports": "error",
     },
   },
 ];

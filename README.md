@@ -18,7 +18,7 @@ This repository is a [monorepo](https://en.wikipedia.org/wiki/Monorepo), powered
 
 It is only composed of one main project:
 
-- the [Web App](apps/web), powered by [Remix](https://remix.run/)
+- the [Web App](apps/web), powered by [React Router](https://reactrouter.com/)
 
 ## Getting started
 

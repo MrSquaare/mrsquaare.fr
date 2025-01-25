@@ -7,7 +7,7 @@ import globals from "globals";
 import rootConfig from "../../eslint.config.mjs";
 
 export default [
-  { ignores: ["build"] },
+  { ignores: ["build", ".react-router"] },
   ...rootConfig,
   jsxA11y.flatConfigs.recommended,
   {
