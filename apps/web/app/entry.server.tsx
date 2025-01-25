@@ -44,10 +44,7 @@ export default async function handleRequest(
 
     const { pipe, abort } = renderToPipeableStream(
       <I18nProvider instance={instance}>
-        <ThemeProvider
-          config={themeConfig}
-          initialTheme={initialTheme}
-        >
+        <ThemeProvider config={themeConfig} initialTheme={initialTheme}>
           <ServerRouter context={routerContext} url={request.url} />
         </ThemeProvider>
       </I18nProvider>,

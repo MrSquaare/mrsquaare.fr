@@ -16,7 +16,6 @@ async function hydrate() {
   startTransition(() => {
     hydrateRoot(
       document,
-
       <StrictMode>
         <I18nProvider instance={instance}>
           <ThemeProvider config={themeConfig} initialTheme={initialTheme}>
