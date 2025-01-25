@@ -1,5 +1,11 @@
 # @mrsquaare-fr/web
 
+## 2.3.0
+
+### Minor Changes
+
+- [#33](https://github.com/MrSquaare/mrsquaare.fr/pull/33) [`2938409`](https://github.com/MrSquaare/mrsquaare.fr/commit/2938409bcaab87f3ccb79dea6d60fd17b1ba9dab) Thanks [@MrSquaare](https://github.com/MrSquaare)! - Upgrade to React Router v7
+
 ## 2.2.0
 
 ### Minor Changes
