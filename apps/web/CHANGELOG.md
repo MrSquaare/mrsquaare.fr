@@ -1,5 +1,11 @@
 # @mrsquaare-fr/web
 
+## 2.3.1
+
+### Patch Changes
+
+- [#35](https://github.com/MrSquaare/mrsquaare.fr/pull/35) [`321778e`](https://github.com/MrSquaare/mrsquaare.fr/commit/321778e518dcc29bb3a87a4a7d9eae15b97a5f1f) Thanks [@MrSquaare](https://github.com/MrSquaare)! - Bump deps
+
 ## 2.3.0
 
 ### Minor Changes
