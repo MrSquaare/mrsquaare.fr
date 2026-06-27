@@ -38,6 +38,7 @@ const themeSwitcherRecipe = sva({
       alignItems: "center",
       justifyContent: "center",
       p: 0,
+      position: "relative",
     },
   },
   defaultVariants: {
