@@ -1,0 +1,75 @@
+{
+  "common": {
+    "theme": {
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System",
+      "switch": "Switch theme"
+    },
+    "language": {
+      "switch": "Switch language"
+    }
+  },
+  "home": {
+    "title": "Hi, I'm",
+    "subtitle": "A developer passionate about web and mobile technologies.",
+    "contact_me": "Contact me",
+    "cv": "Curriculum Vitae",
+    "meta": {
+      "title": "MrSquaare",
+      "description": "MrSquaare's personal website"
+    }
+  },
+  "cv": {
+    "page": {
+      "title": "Curriculum Vitae",
+      "meta": {
+        "title": "Curriculum Vitae - MrSquaare",
+        "description": "MrSquaare's curriculum vitae"
+      }
+    },
+    "nav": {
+      "home": "Home"
+    },
+    "job_title": "Web and mobile developer",
+    "about_me": {
+      "title": "About me",
+      "content": "Passionate about development, I have specifically focused on the web and mobile worlds and have built up my expertise there. I'm fully committed to the projects I work on. I'm constantly looking for ways to improve, and my curiosity drives me to explore new technologies."
+    },
+    "languages": {
+      "title": "Languages",
+      "french": "French (native)",
+      "english": "English (fluent)"
+    },
+    "contacts": {
+      "title": "Contacts"
+    },
+    "experiences": {
+      "title": "Experiences",
+      "type": {
+        "0": "Internship",
+        "1": "Apprenticeship",
+        "2": "Permanent contract"
+      },
+      "date": {
+        "from-to": "From {fromDate} to {toDate}",
+        "since": "Since {date}"
+      }
+    },
+    "educations": {
+      "title": "Educations",
+      "date": {
+        "from-to": "From {fromDate} to {toDate}"
+      }
+    },
+    "skills": {
+      "title": "Skills",
+      "years_one": "{count} year",
+      "years_other": "{count} years"
+    },
+    "projects": {
+      "title": "Projects",
+      "in_development": "In development"
+    }
+  }
+}

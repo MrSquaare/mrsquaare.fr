@@ -1,20 +1,22 @@
-# Environment
-**/.env*
-
 # Node
-**/node_modules/
+node_modules/
+
+# pnpm
+.pnpm-store/
 
 # Turborepo
-**/.turbo/
+.turbo/
 
-# Editors and IDEs
+# Environment variables
+*.env*
+
+# Logs
+*.log
+
+# Editors
 .idea/
-.vscode/*
+.vscode/**
 !.vscode/extensions.json
-!.vscode/launch.json
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/*.code-snippets
 
 # macOS
 .DS_Store
