@@ -13,8 +13,6 @@ import { LanguageSwitcher } from "@/components/common/language-switcher";
 import { ThemeSwitcher } from "@/components/common/theme-switcher";
 import { m } from "@/paraglide/messages";
 
-import type { LanguageType } from "../types/i18n";
-
 import {
   AboutMe,
   Contacts,
@@ -28,7 +26,7 @@ import { getLocale } from "../paraglide/runtime";
 
 // eslint-disable-next-line react-refresh/only-export-components
 const CV: FC = () => {
-  const language = getLocale() as LanguageType;
+  const language = getLocale();
 
   return (
     <>
