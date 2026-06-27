@@ -1,5 +1,11 @@
 # @mrsquaare-fr/web
 
+## 3.0.0
+
+### Major Changes
+
+- [#42](https://github.com/MrSquaare/mrsquaare.fr/pull/42) [`62d5cd4`](https://github.com/MrSquaare/mrsquaare.fr/commit/62d5cd4bd76fe070c39deea5fc84f2f975e22989) Thanks [@MrSquaare](https://github.com/MrSquaare)! - The Refresh Update
+
 ## 2.3.1
 
 ### Patch Changes
