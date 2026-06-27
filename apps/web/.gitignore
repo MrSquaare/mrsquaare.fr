@@ -1,6 +1,21 @@
-.DS_Store
-/node_modules/
+# Node
+node_modules/
 
-# React Router
-/.react-router/
-/build/
+# Turborepo
+.turbo/
+
+## Panda
+styled-system
+styled-system-studio
+
+# Environment variables
+*.env*
+
+# Logs
+*.log
+
+# Build
+dist/
+
+# macOS
+.DS_Store

@@ -8,7 +8,6 @@ MrSquaare's personal website
 - [Getting started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
-- [Using](#using)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -18,7 +17,7 @@ This repository is a [monorepo](https://en.wikipedia.org/wiki/Monorepo), powered
 
 It is only composed of one main project:
 
-- the [Web App](apps/web), powered by [React Router](https://reactrouter.com/)
+- the [Web App](apps/web), powered by [React](https://react.dev/)
 
 ## Getting started
 
@@ -48,14 +47,6 @@ pnpm install
 pnpm build
 ```
 
-## Using
-
-Start the servers:
-
-```shell script
-pnpm start
-```
-
 ## Contributing
 
 Bug reports, feature requests, other issues and pull requests are welcome.
@@ -63,5 +54,5 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for more information.
 
 ## License
 
-Distributed under the [GNU GPLv3](https://choosealicense.com/licenses/gpl-3.0/) License.
+Distributed under the [MIT](https://choosealicense.com/licenses/mit/) License.
 See [LICENSE](LICENSE) for more information.

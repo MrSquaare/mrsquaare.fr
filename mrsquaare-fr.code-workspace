@@ -2,11 +2,15 @@
   "folders": [
     {
       "name": "root",
-      "path": "."
+      "path": ".",
     },
     {
-      "name": "apps",
-      "path": "./apps"
-    }
-  ]
+      "name": "web",
+      "path": "./apps/web",
+    },
+    {
+      "name": "eslint-config",
+      "path": "./packages/eslint-config",
+    },
+  ],
 }

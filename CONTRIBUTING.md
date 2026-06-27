@@ -44,14 +44,14 @@ pnpm dev
 
 ## Testing
 
-Lint the code:
+Check the code:
 
 ```shell script
-pnpm lint
+pnpm check
 ```
 
-Format the code:
+Auto-fix the code:
 
 ```shell script
-pnpm lint:fix
+pnpm check:fix
 ```

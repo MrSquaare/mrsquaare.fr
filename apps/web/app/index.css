@@ -1,9 +1,0 @@
-@layer reset, base, tokens, recipes, utilities;
-
-svg {
-  fill: currentColor;
-}
-
-.dark svg {
-  fill: #fafafa;
-}

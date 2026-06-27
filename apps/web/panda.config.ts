@@ -1,15 +1,17 @@
 import { defineConfig } from "@pandacss/dev";
+import sandwichUIPlugin from "@sandwich-ui/core/plugin";
 import sandwichUIPreset from "@sandwich-ui/core/preset";
 
 export default defineConfig({
-  preflight: true,
+  importMap: "@sandwich-ui/styled-system",
+  include: ["./src/**/*.{js,jsx,ts,tsx}"],
+  jsxFramework: "react",
+  outdir: "styled-system",
+  plugins: [sandwichUIPlugin],
   prefix: "sw",
+  preflight: true,
   presets: ["@pandacss/dev/presets", sandwichUIPreset],
-  include: [
-    "./node_modules/@sandwich-ui/core/dist/panda.buildinfo.json",
-    "./node_modules/@sandwich-ui/react/dist/panda.buildinfo.json",
-    "./app/**/*.{js,jsx,ts,tsx}",
-  ],
-  importMap: "@sandwich-ui/core",
-  outdir: "./node_modules/@sandwich-ui/core/dist/styled-system",
+  staticCss: {
+    recipes: "*",
+  },
 });

@@ -1,4 +1,18 @@
 packages:
   - apps/*
-onlyBuiltDependencies:
-  - esbuild
+  - packages/*
+
+allowBuilds:
+  esbuild: true
+  unrs-resolver: true
+
+minimumReleaseAgeExclude:
+  - "@turbo/darwin-64@2.10.0"
+  - "@turbo/darwin-arm64@2.10.0"
+  - "@turbo/linux-64@2.10.0"
+  - "@turbo/linux-arm64@2.10.0"
+  - "@turbo/windows-64@2.10.0"
+  - "@turbo/windows-arm64@2.10.0"
+  - turbo@2.10.0
+  - "@sandwich-ui/core@0.2.0"
+  - "@sandwich-ui/react@0.5.0"
