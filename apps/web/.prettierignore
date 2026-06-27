@@ -1,3 +1,5 @@
+project.inlang/
+!project.inlang/settings.json
 styled-system/
 src/routeTree.gen.ts
 src/paraglide/
