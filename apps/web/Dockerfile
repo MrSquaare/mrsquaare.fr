@@ -22,16 +22,11 @@ COPY ./apps/web ./apps/web
 RUN pnpm build
 
 
-FROM base
+FROM nginx:1-alpine
 
-COPY --from=build ${APP_DIRECTORY}/apps/web/build/ ./apps/web/build/
-
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod --frozen-lockfile
-
-RUN apk add --no-cache dumb-init
+COPY --from=build /usr/src/app/apps/web/dist /usr/share/nginx/html
+COPY ./apps/web/nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 3000
 
-ENTRYPOINT ["dumb-init", "--"]
-
-CMD ["pnpm", "-F", "@mrsquaare-fr/web", "start"]
+CMD ["nginx", "-g", "daemon off;"]
