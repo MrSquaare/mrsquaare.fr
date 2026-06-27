@@ -89,7 +89,7 @@ export const ThemeSwitcher: FC<ThemeSwitcherProps> = (props) => {
             icon={"ph:moon"}
             width={"1.2rem"}
           />
-          <span className={classes.srOnly}>Switch theme</span>
+          <span className={classes.srOnly}>{m["common.theme.switch"]()}</span>
         </Button>
       </MenuTrigger>
       <MenuPositioner>

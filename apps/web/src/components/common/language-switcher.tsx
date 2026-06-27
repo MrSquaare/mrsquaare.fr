@@ -10,6 +10,7 @@ import {
 } from "@sandwich-ui/react";
 import { type RecipeVariantProps, sva } from "@sandwich-ui/styled-system/css";
 
+import { m } from "../../paraglide/messages";
 import { getLocale, setLocale } from "../../paraglide/runtime";
 
 const languageSwitcherRecipe = sva({
@@ -63,7 +64,9 @@ export const LanguageSwitcher: FC<LanguageSwitcherProps> = (props) => {
           variant={"outlined"}
         >
           {language.toUpperCase()}
-          <span className={classes.srOnly}>Switch language</span>
+          <span className={classes.srOnly}>
+            {m["common.language.switch"]()}
+          </span>
         </Button>
       </MenuTrigger>
       <MenuPositioner>

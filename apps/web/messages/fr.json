@@ -3,18 +3,30 @@
     "theme": {
       "light": "Clair",
       "dark": "Sombre",
-      "system": "Système"
+      "system": "Système",
+      "switch": "Changer de thème"
+    },
+    "language": {
+      "switch": "Changer de langue"
     }
   },
   "home": {
     "title": "Salut, je suis",
     "subtitle": "Un développeur passionné par les technologies web et mobiles.",
     "contact_me": "Me contacter",
-    "cv": "Curriculum Vitae"
+    "cv": "Curriculum Vitae",
+    "meta": {
+      "title": "MrSquaare",
+      "description": "Site personnel de MrSquaare"
+    }
   },
   "cv": {
     "page": {
-      "title": "Curriculum Vitae"
+      "title": "Curriculum Vitae",
+      "meta": {
+        "title": "Curriculum Vitae - MrSquaare",
+        "description": "Curriculum vitae de MrSquaare"
+      }
     },
     "nav": {
       "home": "Accueil"
@@ -22,7 +34,7 @@
     "job_title": "Développeur web et mobile",
     "about_me": {
       "title": "À propos de moi",
-      "content": "Passionné par le développement, je me suis spécifiquement orienté vers les univers du web et du mobile et y ait construit mon expertise. Je m'investis pleinement dans les projets sur lesquels je travaille. Je cherche constamment à me perfectionner et ma curiosité me pousse à explorer de nouvelles technologies."
+      "content": "Passionné par le développement, je me suis spécifiquement orienté vers les univers du web et du mobile et y ai construit mon expertise. Je m'investis pleinement dans les projets sur lesquels je travaille. Je cherche constamment à me perfectionner et ma curiosité me pousse à explorer de nouvelles technologies."
     },
     "languages": {
       "title": "Langues",

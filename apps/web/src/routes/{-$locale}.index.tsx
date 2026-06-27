@@ -168,8 +168,8 @@ export const Route = createFileRoute("/{-$locale}/")({
   component: Home,
   head: () => ({
     meta: [
-      { title: "MrSquaare" },
-      { content: "MrSquaare's personal website", name: "description" },
+      { title: m["home.meta.title"]() },
+      { content: m["home.meta.description"](), name: "description" },
     ],
   }),
 });

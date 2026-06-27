@@ -121,8 +121,8 @@ export const Route = createFileRoute("/{-$locale}/cv")({
   component: CV,
   head: () => ({
     meta: [
-      { title: "Curriculum Vitae - MrSquaare" },
-      { content: "MrSquaare's curriculum vitae", name: "description" },
+      { title: m["cv.page.meta.title"]() },
+      { content: m["cv.page.meta.description"](), name: "description" },
     ],
   }),
 });

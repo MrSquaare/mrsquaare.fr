@@ -3,18 +3,30 @@
     "theme": {
       "light": "Light",
       "dark": "Dark",
-      "system": "System"
+      "system": "System",
+      "switch": "Switch theme"
+    },
+    "language": {
+      "switch": "Switch language"
     }
   },
   "home": {
     "title": "Hi, I'm",
     "subtitle": "A developer passionate about web and mobile technologies.",
     "contact_me": "Contact me",
-    "cv": "Curriculum Vitae"
+    "cv": "Curriculum Vitae",
+    "meta": {
+      "title": "MrSquaare",
+      "description": "MrSquaare's personal website"
+    }
   },
   "cv": {
     "page": {
-      "title": "Curriculum Vitae"
+      "title": "Curriculum Vitae",
+      "meta": {
+        "title": "Curriculum Vitae - MrSquaare",
+        "description": "MrSquaare's curriculum vitae"
+      }
     },
     "nav": {
       "home": "Home"
