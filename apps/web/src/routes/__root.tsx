@@ -26,10 +26,10 @@ export const Root: FC = () => {
 };
 
 export const Route = createRootRoute({
-  beforeLoad: async () => {
+  beforeLoad: async ({ location }) => {
     document.documentElement.setAttribute("lang", getLocale());
 
-    const decision = await shouldRedirect({ url: window.location.href });
+    const decision = await shouldRedirect({ url: location.href });
 
     if (decision.redirectUrl) {
       throw redirect({ href: decision.redirectUrl.href });
